@@ -14,7 +14,7 @@ public interface Mapper {
 	@Select(" SELECT * FROM MULTIBOARD ORDER BY MNO DESC ")
 	List<BoardDto> selectList();
 
-	@Insert(" INSERT INTO MULTIMEMBER VALUE(NULL,#{mid},#{mpw},#{mname}) ")
+    @Insert(" INSERT INTO MULTIMEMBER VALUES(NULL, #{mid}, #{mpw}, #{mname}, #{mimg}, #{mstatus} )")
 	public int insertRegi(MemberDto dto);
 	
 	@Insert(" INSERT INTO MULTIBOARD VALUE(NULL,#{btitle},#{bcontent},NOW(),#{bimg},0,#{mno})")
