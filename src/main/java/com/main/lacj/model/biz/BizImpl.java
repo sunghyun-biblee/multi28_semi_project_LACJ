@@ -27,8 +27,9 @@ public class BizImpl implements Biz{
 	}
 
 	@Override
-	public int insert(MemberDto dto) {
-		return 0;
+	public int insertRegi(MemberDto dto) {
+		
+		return mapper.insertRegi(dto);
 	}
 
 	@Override
