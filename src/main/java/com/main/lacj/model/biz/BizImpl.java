@@ -27,8 +27,8 @@ public class BizImpl implements Biz{
 	}
 
 	@Override
-	public int insert(MemberDto dto) {
-		return 0;
+	public int insertRegi(MemberDto dto) {
+		return mapper.insertRegi(dto);
 	}
 
 	@Override
@@ -39,6 +39,11 @@ public class BizImpl implements Biz{
 	@Override
 	public int delete(int mno) {
 		return 0;
+	}
+
+	@Override
+	public MemberDto selectLogin(MemberDto dto) {
+		return mapper.selectLogin(dto);
 	}
 
 }

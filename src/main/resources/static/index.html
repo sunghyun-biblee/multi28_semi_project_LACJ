@@ -17,26 +17,26 @@
       <div id="conatiner_box">
         <div id="container_tran">
           <div id="registImg"></div>
-          <form action="#" method="post">
+          <form action="/login" method="post">
             <div id="regist">
               <div class="inputbox">
                 <div class="imgbox" id="idimg">
                   <img src="/img/id.png" alt="" />
                 </div>
-                <input type="text" placeholder="Username" />
+                <input type="text" name="mid" placeholder="Username" />
               </div>
               <div class="inputbox">
                 <div class="imgbox" id="pwimg">
                   <img src="/img/pw.png" alt="" />
                 </div>
-                <input type="password" placeholder="********" />
+                <input type="password" name="mpw" placeholder="********" />
               </div>
-              <button type="button" id="loginBox" onclick="location.href='/mainlist'">LOGIN</button>
+              <button type="submit" id="loginBox">LOGIN</button>
             </div>
             <div id="more">
               <div>
                 <input type="checkbox" id="checkbox" />
-                <a href="http://www.naver.com">Guest Join</a >
+                <a href="guestLogin">Guest Join</a >
               </div>
               <div>
                 <a href="regist">Register</a>

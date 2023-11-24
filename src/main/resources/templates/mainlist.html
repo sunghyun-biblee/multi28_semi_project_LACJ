@@ -13,6 +13,8 @@
           <span>LACJ</span>
         </div>
         <div id="myprofile">
+        	<input type="button" value="로그아웃" onclick="location.href='/logout'">
+        	<span style="margin-right: 32px;" th:text="|${session.user.mname}님 환영합니다!|"></span>
           <a href="#"><img src="/img/myprofile.png" alt="" /></a>
         </div>
       </div>
@@ -22,7 +24,7 @@
       <div id="container">
         <div id="container_title">게시물 목록</div>
         <div th:each=boardlist:${list} id="container_content">
-          <img th:src="/img/7.jpg" alt="" id="content_img" />
+          <a href="login"><img th:src="@{/img/}+${boardlist.bimg}" alt="" id="content_img" /></a>
           <!-- src에 파일값 불러오기-->
           <div id="content">
             <span> <!--#: 데이터 불러오기 -->asdasd</span>

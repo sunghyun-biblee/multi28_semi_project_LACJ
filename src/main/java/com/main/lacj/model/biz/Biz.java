@@ -10,7 +10,8 @@ public interface Biz {
 
 	public List<BoardDto> selectList();
 	public MemberDto selectOne(int mno);
-	public int insert(MemberDto dto);
+	public int insertRegi(MemberDto dto);
 	public int update(MemberDto dto);
 	public int delete(int mno);
+	public MemberDto selectLogin(MemberDto dto);
 }
