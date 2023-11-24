@@ -2,13 +2,18 @@ package com.main.lacj.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
 public class LacjController {
 //     index.html > login page
+
+	@RequestMapping("/mainlist")
+	public String mainlist() {
+		
+		return "mainlist";
+	}
     
     @GetMapping("/regist")
     public String regist() {
@@ -19,13 +24,8 @@ public class LacjController {
     @GetMapping("/mypage")
     public String mypage() {
 
-        return "mypage";
+        return "mypagedd";
     }
 
-    @PostMapping("/mainlist")
-    public String mainlist() {
-
-        return "mainlist";
-    }
 
 }
