@@ -36,34 +36,55 @@ public class LacjController {
 		}
 
 	}
-	
+
 	@GetMapping("/regist")
 	public String regist() {
 
 		return "regist";
 	}
+
 	@PostMapping("/insertboard")
-	public String insertboard(BoardDto dto,HttpSession session) {
-		
+	public String insertboard(BoardDto dto, HttpSession session) {
+
 //		int mno=session.getAttribute("user");
 		return "mainlist";
 	}
+
 	@GetMapping("/mypage")
 	public String mypage() {
 
 		return "mypage";
 	}
 
-	@GetMapping("/login")
-	public String login() {
+	@RequestMapping("/login")
+	public String login(MemberDto dto, HttpSession session) {
 
+		MemberDto login = biz.selectLogin(dto);
+
+		if (login != null) {
+			session.setAttribute("user", login);
+			session.setMaxInactiveInterval(60 * 10);
+			return "redirect:mainlist";
+		} else {
+
+			// 로그인 실패 alert창 처리하기
+			return "login";
+		}
+	}
+
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
 		return "login";
 	}
 
-	
-	
-	
-	
-	
-	
+	@RequestMapping("/guestLogin")
+	public String guestLogin(HttpSession session) {
+		MemberDto guest = new MemberDto(0, null, null, "GUEST", null, "G");
+
+		session.setAttribute("user", guest);
+		session.setMaxInactiveInterval(60 * 10);
+		return "redirect:mainlist";
+	}
+
 }
