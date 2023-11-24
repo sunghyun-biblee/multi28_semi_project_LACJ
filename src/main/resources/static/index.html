@@ -1,106 +1,55 @@
 <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="/css/mainlist.css"/>
-      </head>
-      <body>
-        <header>
-          <div id="container_header">
-            <div id="teamname">
-              <span>LACJ</span>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <div id="conatiner_box">
+        <div id="container_tran">
+          <div id="registImg"></div>
+          <form action="/mainlist" method="post">
+            <div id="regist">
+              <div class="inputbox">
+                <div class="imgbox" id="idimg">
+                  <img src="/img/id.png" alt="" />
+                </div>
+                <input type="text" placeholder="Username" />
+              </div>
+              <div class="inputbox">
+                <div class="imgbox" id="pwimg">
+                  <img src="/img/pw.png" alt="" />
+                </div>
+                <input type="password" placeholder="********" />
+              </div>
+              <button type="submit" id="loginBox">LOGIN</button>
             </div>
-            <div id="myprofile">
-              <a href="#"><img src="/img/myprofile.png" alt="" /></a>
+            <div id="more">
+              <div>
+                <a href="#">Guest Join</a>
+              </div>
+              <div>
+                <a href="regist">Register</a>
+              </div>
             </div>
-          </div>
-        </header>
+          </form>
 
-        <section>
-         	
-            <div id="container">
-              <div id="container_title">게시물 목록</div>
-              <div id="container_content">
-                <img src="/img/7.jpg" alt="" id="content_img" />
-                <!-- src에 파일값 불러오기-->
-                <div id="content">
-                  <span> <!--#: 데이터 불러오기 -->asdasd</span>
-                  <p>
-                    <!-- # :데이터 불러오기 -->
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Recusandae facere, at, debitis ut est quod architecto
-                    facilis officiis ipsam natus placeat quo explicabo minus
-                    illum eligendi fugiat! Delectus, perspiciatis fugit.Lorem
-                    ipsum dolor, sit amet consectetur adipisicing elit.
-                    Recusandae facere, at, debitis ut est quod architecto
-                    facilis officiis ipsam natus placeat quo explicabo minus
-                    illum eligendi fugiat! Delectus, perspiciatis fugit.Lorem
-                    ipsum dolor, sit amet consectetur adipisicing elit.
-                    Recusandae facere, at, debitis ut est quod architecto
-                    facilis officiis ipsam natus placeat quo explicabo minus
-                    illum eligendi fugiat! Delectus, perspiciatis fugit.Lorem
-                    ipsum dolor, sit amet consectetur adipisicing elit.
-                    Recusandae facere, at, debitis ut est quod architecto
-                    facilis officiis ipsam natus placeat quo explicabo minus
-                    illum eligendi fugiat! Delectus, perspiciatis fugit.Lorem
-                    ipsum dolor, sit amet consectetur adipisicing elit.
-                    Recusandae facere, at, debitis ut est quod architecto
-                    facilis officiis ipsam natus placeat quo explicabo minus
-                    illum eligendi fugiat! Delectus, perspiciatis fugit.
-                  </p>
-                </div>
-                <div id="likedelete">
-                  <div id="likes">
-                    <span>좋아요</span>
-                    <span id="likescount"> <!-- #: 데이터 불러오기 -->1</span>
-                    <img src="/img/heart.png" alt="" class="imgbutton" />
-                  </div>
-                  <div id="delete">
-                    <span>삭제</span>
-                    <img src="/img/warning.png" alt="" class="imgbutton" />
-                  </div>
-                </div>
-              </div>
-              <div id="container_coment">
-                <div id="coment_box">
-                  <span>#댓글 작성</span>
-                  <textarea
-                    name="#"
-                    id=""
-                    cols="30"
-                    rows="10"
-                    placeholder="  게시물에 댓글을 작성해보세요!"
-                  ></textarea>
-                  <div>
-                    <input type="submit" value="작성" id="commentsubmit" />
-                  </div>
-                </div>
-              </div>
-            </div>
-         
-          <!-- ------------------------------------------------------------------------- -->
-          <div id="container_pagenav">
-            <div id="pageination">
-              <ul>
-                <li><a href="#" class="mv">◀</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#" class="mv">▶</a></li>
-              </ul>
-            </div>
+          <div id="footer">
+            <span>Copyright 2023 LACJ inc. all rights reserved. </span>
           </div>
-        </section>
-        
-        <footer>
-          <div>
-            <span>조성현</span> <span>주현록</span> <span>안해림</span>
-            <span>이한빈</span>
-          </div>
-        </footer>
-      </body>
-    </html>
+        </div>
+      </div>
+    </div>
+    <div class="overlay"></div>
+    <script src="/js/login.js"></script>
+  </body>
+</html>
