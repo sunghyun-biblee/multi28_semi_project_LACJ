@@ -33,7 +33,7 @@ form:hover {
   background-repeat: no-repeat;
   background-size: cover;
 
-  background: url("/src/7.jpg");
+  background: url("/img/7.jpg");
 }
 input {
   width: 100%;
@@ -127,7 +127,7 @@ button {
   margin: 0 auto;
   position: relative;
   top: 5rem;
-  background-image: url("/src/regist.png");
+  background-image: url("/img/regist.png");
   width: 10rem;
   height: 10rem;
   z-index: 1;
