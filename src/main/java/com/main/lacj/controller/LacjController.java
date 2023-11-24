@@ -26,8 +26,8 @@ public class LacjController {
 		return "mainlist";
 	}
 
-	@PostMapping("/insertRes")
-	public String intsertRes(MemberDto dto) {
+	@PostMapping("/registinsert")
+	public String registinsert(MemberDto dto) {
 
 		if (biz.insertRegi(dto) > 0) {
 			return "redirect:mainlist";
@@ -41,13 +41,6 @@ public class LacjController {
 	public String regist() {
 
 		return "regist";
-	}
-
-	@PostMapping("/insertboard")
-	public String insertboard(BoardDto dto, HttpSession session) {
-
-//		int mno=session.getAttribute("user");
-		return "mainlist";
 	}
 
 	@GetMapping("/mypage")
@@ -85,6 +78,26 @@ public class LacjController {
 		session.setAttribute("user", guest);
 		session.setMaxInactiveInterval(60 * 10);
 		return "redirect:mainlist";
+	}
+
+	@RequestMapping("/boardinsertform")
+	public String boardinsertform() {
+		return "boardinsert";
+	}
+
+	@PostMapping("/boardinsert")
+	public String boardinsert(BoardDto dto, HttpSession session) {
+
+		MemberDto logindto = (MemberDto) session.getAttribute("user");
+		int mno = logindto.getMno();
+		if (biz.insertBoard(dto, mno) > 0) {
+			System.out.println("성공");
+			return "mainlist";
+		} else {
+			System.out.println("실패");
+			return "insert";
+		}
+
 	}
 
 }
