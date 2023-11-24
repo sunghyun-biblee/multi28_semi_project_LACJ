@@ -1,4 +1,4 @@
-package com.main.lacj.dto;
+package com.main.lacj.model.dto;
 
 public class MemberDto {
     private int mno;  // primary key

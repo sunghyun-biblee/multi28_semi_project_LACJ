@@ -1,10 +1,9 @@
-package com.main.lacj.dto;
+package com.main.lacj.model.dto;
 
 import java.util.Date;
 
 public class BoardDto {
     private int bno;
-    private String bid;
     private String btitle;
     private String bcontent;
     private Date bdate;
