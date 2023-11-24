@@ -26,7 +26,7 @@
         <span style="color: skyblue">회원가입</span>
         <button
           type="submit"
-          onclick="location.href='http://www.naver.com'"
+          onclick="location.href='/login'"
           id="mainbtn"
         >
           메인화면
@@ -42,7 +42,7 @@
           required
           minlegnth="2"
           maxlength="5"
-          name="myname"
+          name="mname"
         />
         <label for="p2">ID</label>
         <input
@@ -53,7 +53,7 @@
           required
           minlegnth="5"
           maxlength="20"
-          name="myid"
+          name="mid"
         />
         <label for="p3">비밀번호</label>
         <input
@@ -64,7 +64,7 @@
           required
           minlegnth="8"
           maxlength="20"
-          name="mypw"
+          name="mpw"
         />
         <label for="p4">전화번호</label>
         <input
@@ -72,20 +72,17 @@
           id="p4"
           type="number"
           placeholder="전화번호를 입력하세요"
-          required
           maxlength="20"
-          name="myphone"
         />
+        <!--required-->
         <label for="p5">나이</label>
         <input
           autocomplete="off"
           id="p5"
           type="number"
           placeholder="나이를 입력하세요"
-          required
           min="20"
           max="100"
-          name="my"
         />
         <div id="registbtn">
           <input type="submit" value="확인" />

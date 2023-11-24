@@ -16,7 +16,7 @@ public class LacjController {
 	@Autowired
 	private Biz biz;
 	
-	@PostMapping("/regist")
+	@GetMapping("/regist")
 	public String regist() {
 
 		return "regist";
@@ -33,5 +33,14 @@ public class LacjController {
 		model.addAttribute("list", biz.selectList());
 		
 		return "mainlist";
+	} 
+	
+	@GetMapping("/login")
+	public String login() {
+		
+		
+		return "login";
 	}
+		
+	
 }
