@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/regist.css" />
+    <link
+      rel="stylesheet"
+      href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <header>
+      <div id="container_header">
+        <div id="teamname"><span>CCAE</span></div>
+        <div id="myprofile">
+          <a href="#"><img src="/img/myprofile.png" alt="" /></a>
+        </div>
+      </div>
+    </header>
+
+    <div id="regist">
+      <div id="registheader">
+        <span style="color: skyblue">회원가입</span>
+        <button
+          type="submit"
+          onclick="location.href='http://www.naver.com'"
+          id="mainbtn"
+        >
+          메인화면
+        </button>
+      </div>
+      <form action="#" method="post">
+        <label for="p1">이름</label>
+        <input
+          autocomplete="off"
+          id="p1"
+          type="text"
+          placeholder="이름을 입력하세요"
+          required
+          minlegnth="2"
+          maxlength="5"
+          name="myname"
+        />
+        <label for="p2">ID</label>
+        <input
+          autocomplete="off"
+          id="p2"
+          type="text"
+          placeholder="ID를 입력하세요"
+          required
+          minlegnth="5"
+          maxlength="20"
+          name="myid"
+        />
+        <label for="p3">비밀번호</label>
+        <input
+          autocomplete="off"
+          id="p3"
+          type="password"
+          placeholder="비밀번호를 입력하세요"
+          required
+          minlegnth="8"
+          maxlength="20"
+          name="mypw"
+        />
+        <label for="p4">전화번호</label>
+        <input
+          autocomplete="off"
+          id="p4"
+          type="number"
+          placeholder="전화번호를 입력하세요"
+          required
+          maxlength="20"
+          name="myphone"
+        />
+        <label for="p5">나이</label>
+        <input
+          autocomplete="off"
+          id="p5"
+          type="number"
+          placeholder="나이를 입력하세요"
+          required
+          min="20"
+          max="100"
+          name="my"
+        />
+        <div id="registbtn">
+          <input type="submit" value="확인" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
