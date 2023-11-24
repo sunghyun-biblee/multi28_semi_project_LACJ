@@ -3,6 +3,7 @@ package com.main.lacj.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LacjController {
@@ -20,7 +21,7 @@ public class LacjController {
 		return "mypage";
 	}
 
-	@PostMapping("/mainlist")
+	@RequestMapping("/mainlist")
 	public String mainlist() {
 
 		return "mainlist";
