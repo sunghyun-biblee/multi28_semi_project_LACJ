@@ -1,10 +1,10 @@
-package com.main.lacj.biz;
+package com.main.lacj.model.biz;
 
 import java.util.List;
 
-import com.main.lacj.dto.BoardDto;
-import com.main.lacj.dto.CommentDto;
-import com.main.lacj.dto.MemberDto;
+import com.main.lacj.model.dto.BoardDto;
+import com.main.lacj.model.dto.CommentDto;
+import com.main.lacj.model.dto.MemberDto;
 
 public interface Biz {
 
