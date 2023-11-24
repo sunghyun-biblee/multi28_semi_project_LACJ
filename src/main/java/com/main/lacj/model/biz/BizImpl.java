@@ -48,6 +48,11 @@ public class BizImpl implements Biz{
 		return 0;
 	}
 
+    @Override
+    public MemberDto selectLogin(MemberDto dto) {
+        return mapper.selectLogin(dto);
+    }
+
 	
 
 }
