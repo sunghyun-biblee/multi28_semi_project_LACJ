@@ -10,7 +10,8 @@ public class BoardDto {
     private String bimg;
     private int blikes;
     private int mno; // Foreign Key
-	public BoardDto() {
+	
+    public BoardDto() {
 		super();
 	}
 	public BoardDto(int bno, String btitle, String bcontent, Date bdate, String bimg, int blikes, int mno) {
