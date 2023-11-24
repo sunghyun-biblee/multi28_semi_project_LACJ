@@ -8,7 +8,7 @@ import com.main.lacj.model.dto.MemberDto;
 
 public interface Biz {
 
-	public List<MemberDto> selectList();
+	public List<BoardDto> selectList();
 	public MemberDto selectOne(int mno);
 	public int insert(MemberDto dto);
 	public int update(MemberDto dto);

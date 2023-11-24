@@ -9,6 +9,6 @@ import com.main.lacj.model.dto.BoardDto;
 @org.apache.ibatis.annotations.Mapper
 public interface Mapper {
 
-	@Select(" SELECT * FROM MYBOARD ORDER BY MYNO DESC ")
+	@Select(" SELECT * FROM MULTIBOARD ORDER BY MNO DESC ")
 	List<BoardDto> selectList();
 }

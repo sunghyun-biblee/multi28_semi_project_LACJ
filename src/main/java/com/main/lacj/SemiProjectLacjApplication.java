@@ -10,5 +10,5 @@ public class SemiProjectLacjApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SemiProjectLacjApplication.class, args);
 	}
-
+	
 }

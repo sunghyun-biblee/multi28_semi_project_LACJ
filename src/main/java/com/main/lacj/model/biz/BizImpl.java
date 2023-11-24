@@ -17,8 +17,8 @@ public class BizImpl implements Biz{
 	private Mapper mapper;
 	
 	@Override
-	public List<MemberDto> selectList() {
-		return null;
+	public List<BoardDto> selectList() {
+		return mapper.selectList();
 	}
 
 	@Override
