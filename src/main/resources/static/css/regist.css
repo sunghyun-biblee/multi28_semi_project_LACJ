@@ -50,6 +50,9 @@ input:hover {
   outline: none;
   border-color: #1fb6ff;
 }
+input:invalid {
+  border: 1px solid #1fb6ff;
+}
 
 header {
   width: 100%;

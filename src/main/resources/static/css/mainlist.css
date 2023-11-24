@@ -4,18 +4,22 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 a {
   color: black;
   text-decoration: none;
 }
+
 body {
   background-color: aliceblue;
 }
+
 section {
   width: 860px;
   display: block;
   margin: 0 auto;
 }
+
 textarea {
   padding-top: 15px;
   resize: none;
@@ -41,10 +45,24 @@ footer > div > span {
   text-align: center;
   background-color: white;
 }
-
+#teamname {
+  color: white;
+  font-weight: 700;
+}
+#myprofile {
+  cursor: pointer;
+}
+#myprofile > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  font-size: 54px;
+}
 #myprofile > a > img {
-  width: 32px;
-  height: 32px;
+  width: 54px;
+  height: 54px;
 }
 #container_title {
   text-align: center;
@@ -58,13 +76,15 @@ footer > div > span {
   background-color: #76b1e8;
 }
 #container_header > div {
-  padding: 24px;
-  font-size: 30px;
+  padding: 50px;
+  font-size: 54px;
 }
 #container_content {
   border: 1px solid gray;
   border-radius: 5px;
   background-color: white;
+  margin-bottom: 128px;
+  box-shadow: 7px 10px 10px 10px #979fa8;
 }
 #content_img {
   width: 100%;
@@ -125,6 +145,7 @@ footer > div > span {
   margin: 48px 0 48px 0;
   background-color: white;
   padding: 24px 24px 0 24px;
+  box-shadow: 2px 2px 2px 2px #979fa8;
 }
 #coment_box {
   width: 100%;
@@ -152,10 +173,12 @@ footer > div > span {
   border-radius: 10px;
   font-size: 22px;
   width: 100px;
+  cursor: pointer;
 }
 #container_pagenav {
   display: flex;
   justify-content: center;
+  margin: 200px 0 100px 0;
 }
 #pageination {
   display: flex;
@@ -184,6 +207,9 @@ footer > div > span {
   font-size: 24px;
   padding: 20px;
   border: 1px solid rgb(150, 149, 149, 0.4);
+}
+.imgbutton {
+  cursor: pointer;
 }
 .mv {
   color: #76b1e8;
