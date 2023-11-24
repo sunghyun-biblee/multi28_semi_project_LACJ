@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Spoqa Han Sans", sans-serif;
+  letter-spacing: -0.03em;
+  color: #212529;
+}
+
+body {
+  background-color: aliceblue;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+span {
+  font-weight: 400;
+  font-size: 32px;
+  color: #101010;
+  letter-spacing: -0.05em;
+}
+
+label {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 360px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 7px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  border: 1px solid #d3dce6;
+  transition: border-color 200ms ease-in-out;
+}
+
+input:hover {
+  outline: none;
+  border-color: #1fb6ff;
+}
+
+header {
+  width: 100%;
+  position: relative;
+  top: -100;
+  left: 0;
+}
+#myprofile > a > img {
+  width: 32px;
+  height: 32px;
+}
+
+#container_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #76b1e8;
+}
+#container_header > div {
+  padding: 20px;
+}
+#teamname > span {
+  color: white;
+}
+#mypage {
+  margin-top: 300px;
+}
+#mypageheader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+#mainbtn {
+  border: 1px solid #1fb6ff;
+  background-color: rgb(31, 180, 255, 0.2);
+  border-radius: 15px;
+  color: gray;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.8s;
+}
+
+#mainbtn:hover {
+  background-color: rgb(31, 180, 255, 0.7);
+  color: white;
+  font-weight: 400;
+}
+#registbtn {
+  margin-top: 10px;
+}
+#registbtn > input {
+  background-color: #e8f3ff;
+  transition: all 0.5s;
+  border: 1px solid #b5bdc5;
+  box-shadow: 1px 1px 1px 1px #b5bdc5;
+  cursor: pointer;
+}
+#registbtn > input:hover {
+  background-color: rgb(31, 180, 255, 0.3);
+
+  font-size: 18px;
+  box-shadow: 2px 2px 4px 2px #b5bdc5;
+  transform: translateY(-2px);
+}
