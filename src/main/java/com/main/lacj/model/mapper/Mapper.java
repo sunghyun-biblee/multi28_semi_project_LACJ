@@ -19,4 +19,7 @@ public interface Mapper {
 	
 	@Insert(" INSERT INTO MULTIBOARD VALUE(NULL,#{btitle},#{bcontent},NOW(),#{bimg},0,#{mno})")
 	public int insertBoard(BoardDto dto, int mno);
+	
+    @Select(" SELECT * FROM MULTIMEMBER WHERE MID = #{mid} AND MPW = #{mpw}  ")
+    MemberDto selectLogin(MemberDto dto);
 }
