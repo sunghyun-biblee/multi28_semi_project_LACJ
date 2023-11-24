@@ -4,18 +4,22 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 a {
   color: black;
   text-decoration: none;
 }
+
 body {
   background-color: aliceblue;
 }
+
 section {
   width: 860px;
   display: block;
   margin: 0 auto;
 }
+
 textarea {
   padding-top: 15px;
   resize: none;
@@ -23,16 +27,19 @@ textarea {
   box-shadow: 1px 2px 3px 1px rgba(134, 134, 134, 0.7);
   border-radius: 5px;
 }
+
 ul,
 li,
 a {
   text-decoration: none;
   list-style: none;
 }
+
 footer {
   height: 20vh;
   background-color: #76b1e8;
 }
+
 footer > div {
   height: 100%;
   padding: 32px;
@@ -40,6 +47,7 @@ footer > div {
   flex-direction: column;
   justify-content: center;
 }
+
 footer > div > span {
   width: 100px;
   height: 30px;
@@ -51,17 +59,20 @@ footer > div > span {
   width: 50px;
   height: 50px;
 }
+
 #container_title {
   text-align: center;
   font-size: 48px;
   margin-bottom: 60px;
 }
+
 #container_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #76b1e8;
 }
+
 #container_header > ul {
   width: 100px;
   height: 100px;
@@ -70,53 +81,66 @@ footer > div > span {
   justify-content: center;
   align-items: center;
 }
+
 #container_header > div {
   padding: 24px;
   font-size: 30px;
 }
+
 #container_content {
-  border: 1px solid gray;
   border-radius: 5px;
-  background-color: white;
+  background-color: aliceblue;
+  margin-bottom: 120px;
 }
+
 #content_img {
   width: 100%;
   height: 650px;
-  object-fit: cover; /* 가로세로 비율을 유지한 채로 사이즈가 조절되며, 비율이 맞지 않더라도 이미지를 확대해 컨테이너를 완전히 채움*/
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  /* 가로세로 비율을 유지한 채로 사이즈가 조절되며, 비율이 맞지 않더라도 이미지를 확대해 컨테이너를 완전히 채움*/
   /* object-fit: contain;  가로세로 비율을 유지한 채로 사이즈가 조절되지만, 이미지와 컨테이너 간의 비율이 맞지 않는 경우엔 자리가 남게 됩니다. */
 }
+
 #content {
-  padding: 24px;
+  padding: 24px 24px 72px 24px;
 }
+
 #content > span {
   width: 100%;
   font-size: 36px;
 }
+
 #content > p {
   margin-top: 16px;
   width: 100%;
   height: 10vh;
   overflow: auto;
 }
+
 .imgbutton {
   margin-left: 10px;
   width: 24px;
   height: 24px;
 }
+
 #delete {
   color: rgb(240, 81, 108);
   font-weight: 900;
 }
+
 #likedelete {
-  border-top: 1px solid gray;
+  border-top: 1px solid #b5bdc5;
   background-color: azure;
   padding: 14px 0 14px 0;
-  margin-top: 32px;
+  border-radius: 15px;
   height: 6vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 #likedelete > div {
   width: 100%;
   height: 100%;
@@ -126,6 +150,7 @@ footer > div > span {
   justify-content: center;
   align-items: center;
 }
+
 #likes {
   border-right: 1px solid rgba(134, 134, 134, 0.9);
   color: rgb(61, 172, 216);
@@ -134,11 +159,14 @@ footer > div > span {
 #likescount {
   margin-left: 10px;
 }
+
 #container_coment {
-  margin: 48px 0 48px 0;
+  border: 1px solid #b5bdc5;
   background-color: white;
   padding: 24px 24px 0 24px;
+  box-shadow: 4px 4px 4px 4px #d4d5d6;
 }
+
 #coment_box {
   width: 100%;
   display: flex;
@@ -150,12 +178,14 @@ footer > div > span {
   font-size: 20px;
   margin-bottom: 16px;
 }
+
 #coment_box > div {
   display: flex;
   justify-content: center;
   margin: 24px;
   height: 50px;
 }
+
 #commentsubmit {
   display: flex;
   justify-content: center;
@@ -166,19 +196,21 @@ footer > div > span {
   font-size: 22px;
   width: 100px;
 }
+
 #container_pagenav {
   display: flex;
   justify-content: center;
 }
+
 #pageination {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
   width: 50%;
-
   margin-bottom: 48px;
 }
+
 #pageination > ul {
   display: flex;
   height: 100%;
@@ -187,6 +219,7 @@ footer > div > span {
   list-style: none;
   text-decoration: none;
 }
+
 #pageination > ul > li {
   width: 50px;
   background-color: white;
@@ -198,9 +231,11 @@ footer > div > span {
   padding: 20px;
   border: 1px solid rgb(150, 149, 149, 0.4);
 }
+
 .mv {
   color: #76b1e8;
 }
+
 #myprofile {
   display: flex;
   position: absolute;
@@ -210,6 +245,7 @@ footer > div > span {
   width: 100px;
   height: 100px;
 }
+
 #myprofile:hover #dropdown {
   transform: translateX(-20px);
 
@@ -235,7 +271,6 @@ footer > div > span {
   position: absolute;
   bottom: -300px;
   border-bottom-left-radius: 10%;
-
   transform: translateX(300px);
   /* transform: translateX(100px); */
 }
@@ -245,11 +280,20 @@ footer > div > span {
   padding: 10px;
   font-size: 22px;
 }
+
 #dropdown > li > a {
   transition: all 0.3s;
   font-weight: 700;
 }
+
 #dropdown > li:hover > a {
   color: white;
   border-bottom: 1px solid white;
+}
+
+#container_space {
+  border: 2px solid #b5bdc5;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px 10px #d4d5d6;
+  margin-bottom: 100px;
 }
