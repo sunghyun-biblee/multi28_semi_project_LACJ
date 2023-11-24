@@ -1,5 +1,7 @@
 package com.main.lacj.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.main.lacj.model.biz.Biz;
+import com.main.lacj.model.dto.BoardDto;
 import com.main.lacj.model.dto.MemberDto;
 
 @Controller
@@ -33,13 +36,18 @@ public class LacjController {
 		}
 
 	}
-
+	
 	@GetMapping("/regist")
 	public String regist() {
 
 		return "regist";
 	}
-
+	@PostMapping("/insertboard")
+	public String insertboard(BoardDto dto,HttpSession session) {
+		
+//		int mno=session.getAttribute("user");
+		return "mainlist";
+	}
 	@GetMapping("/mypage")
 	public String mypage() {
 
@@ -52,4 +60,10 @@ public class LacjController {
 		return "login";
 	}
 
+	
+	
+	
+	
+	
+	
 }

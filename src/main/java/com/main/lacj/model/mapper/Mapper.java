@@ -16,4 +16,7 @@ public interface Mapper {
 
 	@Insert(" INSERT INTO MULTIMEMBER VALUE(NULL,#{mid},#{mpw},#{mname}) ")
 	public int insertRegi(MemberDto dto);
+	
+	@Insert(" INSERT INTO MULTIBOARD VALUE(NULL,#{btitle},#{bcontent},NOW(),#{bimg},0,#{mno})")
+	public int insertBoard(BoardDto dto, int mno);
 }

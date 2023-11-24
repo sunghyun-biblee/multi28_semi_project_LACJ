@@ -24,11 +24,7 @@
     <div id="regist">
       <div id="registheader">
         <span style="color: skyblue">회원가입</span>
-        <button
-          type="submit"
-          onclick="location.href='/login'"
-          id="mainbtn"
-        >
+        <button type="submit" onclick="location.href='/login'" id="mainbtn">
           메인화면
         </button>
       </div>
@@ -84,6 +80,11 @@
           min="20"
           max="100"
         />
+        <div id="filebtn">
+          <span class="filebtn_text"><p>이미지 등록</p></span>
+          <label for="p6" class="cp6"><span>파일선택</span></label>
+          <input type="file" id="p6" style="display: none" />
+        </div>
         <div id="registbtn">
           <input type="submit" value="확인" />
         </div>

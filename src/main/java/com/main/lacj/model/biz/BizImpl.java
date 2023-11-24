@@ -31,6 +31,12 @@ public class BizImpl implements Biz{
 		
 		return mapper.insertRegi(dto);
 	}
+	
+	@Override
+	public int insertBoard(BoardDto dto, int mno) {
+		
+		return mapper.insertBoard(dto,mno);
+	}
 
 	@Override
 	public int update(MemberDto dto) {
@@ -41,5 +47,7 @@ public class BizImpl implements Biz{
 	public int delete(int mno) {
 		return 0;
 	}
+
+	
 
 }
