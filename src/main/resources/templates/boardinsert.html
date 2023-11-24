@@ -20,11 +20,15 @@
       <form action="/boardinsert" method="post">
         <div id="container">
           <div id="containerL">
-            <!-- 사진 출력-->
-            <img src="/img/aaa.jpg" alt="" />
+            <!-- 사진 출력 > 자바 스크립트 사용해서 업로드 이벤트가 인식되면 아이디가 preview인 img 태그안에 소스를 저장함-->
+            <img id="preview">
           </div>
           <div id="containerR">
-            <input type="text" name="btitle" placeholder="제목을 작성해주세요" />
+            <input
+              type="text"
+              name="btitle"
+              placeholder="제목을 작성해주세요"
+            />
             <textarea
               name="bcontent"
               id="insertboard"
@@ -35,7 +39,12 @@
           </div>
           <div id="containerB">
             <label for="filebtn">이미지 등록</label>
-            <input type="file" value="파일선택" id="filebtn" />
+            <input
+              type="file"
+              value="파일선택"
+              id="filebtn"
+              onchange="readURL(this);"
+            />
             <div>
               <button type="submit">작성</button>
               <button type="button" onclick="history.back()">취소</button>
@@ -52,5 +61,6 @@
         <span>이한빈</span>
       </div>
     </footer>
+    <script type="text/javascript" src="/js/boardinsert.js"></script>
   </body>
 </html>
