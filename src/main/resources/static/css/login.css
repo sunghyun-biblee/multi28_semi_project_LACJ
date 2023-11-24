@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -31,7 +33,7 @@ form:hover {
   background-repeat: no-repeat;
   background-size: cover;
 
-  background: url("/img/7.jpg");
+  background: url("/src/7.jpg");
 }
 input {
   width: 100%;
@@ -125,7 +127,7 @@ button {
   margin: 0 auto;
   position: relative;
   top: 5rem;
-  background-image: url("/img/regist.png");
+  background-image: url("/src/regist.png");
   width: 10rem;
   height: 10rem;
   z-index: 1;
@@ -226,3 +228,4 @@ button {
 box-shadow: none | x-position y-position blur spread color | inset | initial | inherit 
 ex) box-shawdow : 5px 5px 5px 5px black
 */
+
