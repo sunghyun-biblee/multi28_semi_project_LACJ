@@ -23,7 +23,7 @@ function readURL(input) {
     input.files를 콘솔창에 출력해보면 선택된 해당파일의 정보가 나온다.
     input.files[0] 또한 선택된 파일의 정보가 똑같이 출력된다.
     여기서 우리는 멀티플을 사용하지 않았기 때문에 하나의 파일만 선택할 수 있다.
-    즉, files (FileList)에는 하나의 파일정보만 저장되기때문에 files[0]과 같은 결과를 출력한다.
+    files (FileList)에는 선택된 파일정보만 저장되는데, 우리는 multiple 속성을 사용하지않아서 하나의 파일만 선택되므로 files[0]과 같은 결과를 출력한다.
     콘솔창에서의 다른점은 files[0]은 배열의 길이 (선택된 파일의 갯수) 를 출력해준다.
 
 
@@ -35,7 +35,7 @@ function readURL(input) {
     readAsDataURL는 특정 파일에서 데이터를 읽어오는 역할을 하고 종료되는경우 readyState 상태가 done되며 loadend이벤트 트리거가 된다.
     이떄 base64 인코딩된 스트링 데이터가 result 속성(attribute)에 담아지게 됩니다.
     즉, 파일을 선택하는 순간 onload함수가 실행되고 해당 파일의 데이터를 읽은 후에 loadend 상태로 변경되며 인코딩된 문자열을 result에 저장됩니다.
-    저장된 값을 img태그의 src 소스에 바로 담아줍니다
+    result에 저장된 값을 img태그의 src 소스에 바로 담아줍니다
 
   간단하게 설명하면 
   input 태그에서 파일을 선택하는 순간 FileReader 가 실행되고 , 선택된 파일의 데이터를 불러와서 해당 파일의 정보를 result에 저장하게됩니다.
