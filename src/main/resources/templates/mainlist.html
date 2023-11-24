@@ -12,9 +12,9 @@
         <div id="teamname">
           <span>LACJ</span>
         </div>
-        <div id="myprofile">
-          <a href="#"><img src="/img/myprofile.png" alt="" /></a>
-        </div>
+        <label for="m1" id="myprofile">
+          <a href="/login" id="m1"><img src="/img/myprofile.png" alt="" /></a>
+        </label>
       </div>
     </header>
 
@@ -22,7 +22,7 @@
       <div id="container">
         <div id="container_title">게시물 목록</div>
         <div th:each=boardlist:${list} id="container_content">
-          <img th:src="/img/7.jpg" alt="" id="content_img" />
+          <a href="login"><!-- <<= 상세페이지 링크 --><img th:src="@{/img/}+${boardlist.bimg}" alt="" id="content_img" /></a>
           <!-- src에 파일값 불러오기-->
           <div id="content">
             <span> <!--#: 데이터 불러오기 -->asdasd</span>
