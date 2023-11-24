@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LacjController {
-// 	index.html > login page
-	
-	@GetMapping("/regist")
-	public String regist() {
-		
-		return "regist";
-	}
+//     index.html > login page
+    
+    @GetMapping("/regist")
+    public String regist() {
+        
+        return "regist";
+    }
 
-	@GetMapping("/mypage")
-	public String mypage() {
+    @GetMapping("/mypage")
+    public String mypage() {
 
-		return "mypage";
-	}
+        return "mypage";
+    }
 
-	@PostMapping("/mainlist")
-	public String mainlist() {
+    @PostMapping("/mainlist")
+    public String mainlist() {
 
-		return "mainlist";
-	}
+        return "mainlist";
+    }
 
 }
