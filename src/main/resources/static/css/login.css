@@ -1,8 +1,9 @@
-@charset "UTF-8";
-
 * {
   margin: 0;
   box-sizing: border-box;
+}
+body {
+  background-color: #93effe;
 }
 label {
   color: black;
@@ -10,17 +11,18 @@ label {
   height: 10rem;
 }
 form {
+  position: relative;
   background-color: rgba(255, 255, 255, 0.4);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 50%;
-  height: 50%;
-  padding: 5rem 2rem 3rem 2rem;
+  width: 550px;
+  height: 640px;
+  padding: 80px 32px 16px 32px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 1rem;
   margin: 0 auto;
-  transition: all 0.5s;
+  transition: transform 0.5s;
 }
 form:hover {
   box-shadow: 3px 4px 5px 1px rgba(126, 126, 126, 0.6);
@@ -28,13 +30,6 @@ form:hover {
   transform: translateY(-4px);
 }
 
-#container {
-  animation: main2 1s ease-in-out forwards;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  background: url("/img/7.jpg");
-}
 input {
   width: 100%;
   margin-top: 2rem;
@@ -53,6 +48,13 @@ button {
   border: none;
   padding: 1.5rem;
 }
+#container {
+  animation: main2 1.1s ease-out forwards;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background: url("/login/7.jpg");
+}
 .overlay {
   position: absolute;
   top: 0;
@@ -60,12 +62,22 @@ button {
   right: 0;
   bottom: 0;
   height: 100%;
-  z-index: -10;
-  background: linear-gradient(#93effe, #93effe);
+  z-index: 1;
+  /* background-color: red; */
+  background: linear-gradient(#ffffff, #91eeff);
+  animation: main3 1s ease-out forwards;
+}
+@keyframes main3 {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
 }
 @keyframes main2 {
   0% {
-    transform: translateY(70%);
+    transform: translateY(100%);
   }
   100% {
     transform: translateY(0%);
@@ -117,7 +129,7 @@ button {
   justify-content: center;
   width: 100%;
   height: 100%;
-  transition: all 0.3s ease-out;
+  transition: transform 0.3s ease-out;
   backdrop-filter: blur(10px);
 }
 #container_tran:hover {
@@ -125,12 +137,12 @@ button {
 }
 #registImg {
   margin: 0 auto;
-  position: relative;
-  top: 5rem;
+  position: absolute;
+  top: -80px;
+  right: 195px;
   background-image: url("/img/regist.png");
-  width: 10rem;
-  height: 10rem;
-  z-index: 1;
+  width: 160px;
+  height: 160px;
   background-size: cover;
   background-color: rgba(161, 208, 253, 0.9);
   background-color: rgb(211, 231, 245);
@@ -158,7 +170,7 @@ button {
   display: flex;
   height: 4rem;
   color: rgb(0, 0, 25);
-  padding-bottom: 1.5rem;
+  padding: 16px 0 16px 0;
   font-size: 1.3rem;
   justify-content: space-around;
   align-items: center;
@@ -203,11 +215,12 @@ button {
 }
 
 #footer {
+  text-align: center;
   margin-top: 2.3rem;
   font-size: 1.3rem;
   padding-bottom: 5px;
   font-weight: 700;
-  background: linear-gradient(to right, #ffff, skyblue);
+  background: linear-gradient(to right, #938a8a, skyblue);
   color: transparent;
   -webkit-background-clip: text;
   /* 
@@ -228,4 +241,3 @@ button {
 box-shadow: none | x-position y-position blur spread color | inset | initial | inherit 
 ex) box-shawdow : 5px 5px 5px 5px black
 */
-
