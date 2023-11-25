@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,16 +20,15 @@ public class LACJinterceptor implements HandlerInterceptor {
 			throws IOException {
 		logger.info("[interceptor] : preHandle");
 
-		if (request.getSession().getAttribute("user") != null ) {
+		Object user = request.getSession().getAttribute("user");
+		
+		if (user != null ) {
 
 			return true;
-		}
-
-		if (request.getSession().getAttribute("user") == null ) {
-			response.sendRedirect("");
+		}else{
+			response.sendRedirect("/none");
 			return false;
 		}
-		return false;
 	}
 
 	@Override

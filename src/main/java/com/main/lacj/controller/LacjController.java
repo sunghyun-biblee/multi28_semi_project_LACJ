@@ -31,6 +31,11 @@ public class LacjController {
 	@Autowired
 	private Biz biz;
 	
+	@RequestMapping("/none")
+	public String none() {
+		return "none";
+	}
+	
 
 	@RequestMapping("/mainlist")
 	public String mainlist(Model model) {
@@ -38,7 +43,7 @@ public class LacjController {
 		return "mainlist";
 	}
 
-	@PostMapping("/registinsert")
+	@RequestMapping("/registinsert")
 	public String registinsert(MemberDto dto) {
 
 		if (biz.insertRegi(dto) > 0) {
@@ -49,7 +54,7 @@ public class LacjController {
 
 	}
 
-	@GetMapping("/regist")
+	@RequestMapping("/regist")
 	public String regist() {
 
 		return "regist";

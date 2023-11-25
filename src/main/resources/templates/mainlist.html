@@ -30,12 +30,12 @@
         <div id="container_title">게시물 목록</div>
         <div th:each="boardlist:${list}" id="container_content">
           <div id="container_space">
-            <a href="login"
+            <a href=""
               ><img th:src="@{/img/}+${boardlist.bimg}" id="content_img"
             /></a>
             <div id="content">
-              <span> <!--#: 데이터 불러오기 -->asdasd </span>
-              <p>
+              <span th:text="${boardlist.btitle}"> <!--#: 데이터 불러오기 -->asdasd </span>
+              <p th:text="${boardlist.bcontent}">
                 <!-- # :데이터 불러오기 -->
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Recusandae facere, at, debitis ut est quod architecto facilis
