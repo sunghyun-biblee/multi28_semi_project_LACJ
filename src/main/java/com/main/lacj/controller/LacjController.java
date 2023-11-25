@@ -45,7 +45,6 @@ public class LacjController {
 	@PostMapping("/insertboard")
 	public String insertboard(BoardDto dto,HttpSession session) {
 		
-//		int mno=session.getAttribute("user");
 		return "mainlist";
 	}
 	@GetMapping("/mypage")
