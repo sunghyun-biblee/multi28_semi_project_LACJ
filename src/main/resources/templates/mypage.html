@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org%22%3E/
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Document</title>
 <link rel="stylesheet" href="css/mypage.css" />
 <link rel="stylesheet"
-	href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
-	type="text/css" />
+    href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
+    type="text/css" />
 </head>
 <body>
-	<header>
-		<div id="container_header">
+    <header>
+        <div id="container_header">
 
-			<div id="teamname">
-				<span>CCAE2</span>
-			</div>
-			<div id="myprofile">
-				<a href="#"><img src="/src/myprofile.png" alt="" /></a>
-			</div>
-		</div>
-	</header>
+            <div id="teamname">
+                <span>CCAE2</span>
+            </div>
+            <div id="myprofile">
+                <a href="#"><img src="/img/myprofile.png" alt="" /></a>
+            </div>
+        </div>
+    </header>
 
-	<div id="mypage">
-		<div id="mypageheader">
-			<span style="color: skyblue">${name}</span>
-			<button type="submit" onclick="location.href='http://www.naver.com'"
-				id="mainbtn">정보수정</button>
-		</div>
-		<div>
-			<img src="" width="100px" height="100px"><br> ${id}<br>
-			작성글 모아보기<br> +가능하다면 작성글갯수<br> +가능하다면 내가 좋아요한 글<br> <br>
-			<a href="#">탈퇴</a>
-		</div>
-	</div>
+<section>
+    <div id="container">
+        <div id="container1">
+
+        </div>
+        <div id="container2">
+            <span style="color: skyblue" th:text="|${mname} 회원명|"></span>
+            <div id="c2">
+<div><span>100</span><label>write</label></div><div><span>211</span><label>like</label></div>
+            </div>
+            <button type="submit" onclick="location.href='http://www.naver.com/'"
+                id="mainbtn">탈퇴</button>
+               <button type="submit" onclick="location.href='http://www.naver.com/'"
+                   id="mainbtn">정보수정</button>
+           </div>
+    </div>
+</section>
+
 </body>
 </html>
+
