@@ -11,7 +11,9 @@ public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// interceptor 추가
-		registry.addInterceptor(new LACJinterceptor()).excludePathPatterns("/css/**", "/fonts/**", "/js/**", "/img/**","/fonts/**","/index","/");
+		registry.addInterceptor(new LACJinterceptor())
+		.excludePathPatterns("/css/**", "/fonts/**", "/js/**", "/img/**","/fonts/**")
+		.addPathPatterns("/boardinsertform");
 				
 	}
 }

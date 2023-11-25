@@ -17,7 +17,7 @@
     </header>
 
     <section>
-      <form action="/boardinsert" method="post">
+       <form action="/boardinsert" method="post" enctype="multipart/form-data">
         <div id="container"> 
           <div id="containerL">
             <!-- 사진 출력 > 자바 스크립트 사용해서 업로드 이벤트가 인식되면 아이디가 preview인 img 태그안에 소스를 저장함-->
@@ -44,6 +44,7 @@
               value="파일선택"
               id="filebtn"
               onchange="readURL(this);"
+              name="file"
             />
             <div>
               <button type="submit">작성</button>
