@@ -17,8 +17,8 @@ public interface Mapper {
     @Insert(" INSERT INTO MULTIMEMBER VALUES(NULL, #{mid}, #{mpw}, #{mname}, #{mimg}, #{mstatus} )")
 	public int insertRegi(MemberDto dto);
 	
-	@Insert(" INSERT INTO MULTIBOARD VALUE(NULL,#{btitle},#{bcontent},NOW(),#{bimg},0,#{mno})")
-	public int insertBoard(BoardDto dto, int mno);
+	@Insert(" INSERT INTO MULTIBOARD VALUE(NULL, #{btitle}, #{bcontent}, NOW(), #{bimg}, 0, #{mno})")
+	public int insertBoard(String btitle, String bcontent, String bimg, int mno);
 	
     @Select(" SELECT * FROM MULTIMEMBER WHERE MID = #{mid} AND MPW = #{mpw}  ")
     MemberDto selectLogin(MemberDto dto);

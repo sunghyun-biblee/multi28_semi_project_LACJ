@@ -33,9 +33,8 @@ public class BizImpl implements Biz{
 	}
 	
 	@Override
-	public int insertBoard(BoardDto dto, int mno) {
-		
-		return mapper.insertBoard(dto,mno);
+	public int insertBoard(String btitle, String bcontent, String bimg, int mno) {
+		return mapper.insertBoard(btitle,bcontent,bimg,mno);
 	}
 
 	@Override
