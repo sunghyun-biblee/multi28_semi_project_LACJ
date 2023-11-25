@@ -56,15 +56,18 @@ public class LacjController {
 	}
 
 	@RequestMapping("/mypage")
-	public String mypage(HttpSession session) {
-		MemberDto dto = (MemberDto)session.getAttribute("user");
-				
-		if(dto.getMstatus() != "G") {
-			return "mypage";
-		}else {
-			return "mypagefail";	//alert창으로 '게스트는 마이페이지가 존제하지않습니디...'
-		}
-	}
+    public String mypage(HttpSession session, Model model) {
+        MemberDto dto = (MemberDto)session.getAttribute("user");
+        model.addAttribute("dto",dto); 
+
+        if(dto.getMstatus() != "G") {
+            return "mypage";
+        }else {
+            return "mypagefail";    //alert창으로 '게스트는 마이페이지가 존제하지않습니디...'
+        }
+    }
+	
+	 
 	
 	@RequestMapping("/mypagefail")
 	public String mypagefail() {
