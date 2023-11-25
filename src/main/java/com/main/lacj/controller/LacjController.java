@@ -92,10 +92,10 @@ public class LacjController {
 		int mno = logindto.getMno();
 		if (biz.insertBoard(dto, mno) > 0) {
 			System.out.println("성공");
-			return "mainlist";
+			return "redirect:login";
 		} else {
 			System.out.println("실패");
-			return "insert";
+			return "redirect:boardinsert";
 		}
 
 	}
