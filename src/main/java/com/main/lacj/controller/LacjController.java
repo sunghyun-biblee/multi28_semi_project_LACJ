@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.main.lacj.model.biz.Biz;
 import com.main.lacj.model.dto.BoardDto;
 import com.main.lacj.model.dto.MemberDto;
-import com.main.lacj.model.file.FileValidator;
 import com.main.lacj.model.file.UploadFile;
 
 @Controller
@@ -31,8 +31,6 @@ public class LacjController {
 	@Autowired
 	private Biz biz;
 	
-	@Autowired
-	private FileValidator fileValidator;
 
 	@RequestMapping("/mainlist")
 	public String mainlist(Model model) {
@@ -117,23 +115,18 @@ public class LacjController {
 
 		MemberDto logindto = (MemberDto) session.getAttribute("user");
 		int mno = logindto.getMno();
-		if (biz.insertBoard(dto, mno) > 0) {
-			
-			fileValidator.validate(uploadFile, result);
-			if(result.hasErrors()) {
-				return "mainlist";
-			}
-			
-			MultipartFile file = uploadFile.getFile();
-			String filename = file.getOriginalFilename();	//업로드 되어 controller로 넘어온 filedml 실제 이름
-			//System.out.println(filename);
-			
-			UploadFile fileobj = new UploadFile();
-			fileobj.setFilename(filename);
-			fileobj.setDesc(uploadFile.getDesc());
-			
-			InputStream inputStream = null;
-			OutputStream outputStream = null;
+		String btitle = dto.getBtitle();
+		String bcontent = dto.getBcontent();
+		
+		MultipartFile file = uploadFile.getFile();
+		String bimg = file.getOriginalFilename();	//업로드 되어 controller로 넘어온 filedml 실제 이름
+		//System.out.println(filename);
+		
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
+		
+		
+		if (biz.insertBoard(btitle, bcontent, bimg, mno) > 0) {
 			
 			try {
 				inputStream = file.getInputStream();
@@ -144,7 +137,7 @@ public class LacjController {
 					storage.mkdirs();	//없으면 디렉토리 만들기(폴더생성)
 				}
 				
-				File newfile = new File(path+"/"+filename);
+				File newfile = new File(path+"/"+bimg);
 				if(!newfile.exists()) {
 					newfile.createNewFile();
 				}
@@ -161,11 +154,10 @@ public class LacjController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			System.out.println("성공");
-			return "redirect:login";
-		} else {
-			System.out.println("실패");
-			return "redirect:boardinsert";
+				return "redirect:mainlist";
+			}else {
+			return "insert";
 		}
 	}
 }
+
