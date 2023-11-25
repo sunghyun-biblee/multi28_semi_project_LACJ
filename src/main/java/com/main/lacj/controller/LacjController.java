@@ -26,8 +26,8 @@ public class LacjController {
 		return "mainlist";
 	}
 
-	@PostMapping("/insertRes")
-	public String intsertRes(MemberDto dto) {
+	@PostMapping("/registinsert")
+	public String registinsert(MemberDto dto) {
 
 		if (biz.insertRegi(dto) > 0) {
 			return "redirect:mainlist";
@@ -36,33 +36,68 @@ public class LacjController {
 		}
 
 	}
-	
+
 	@GetMapping("/regist")
 	public String regist() {
 
 		return "regist";
 	}
-	@PostMapping("/insertboard")
-	public String insertboard(BoardDto dto,HttpSession session) {
-		
-		return "mainlist";
-	}
+
 	@GetMapping("/mypage")
 	public String mypage() {
 
 		return "mypage";
 	}
 
-	@GetMapping("/login")
-	public String login() {
+	@RequestMapping("/login")
+	public String login(MemberDto dto, HttpSession session) {
 
+		MemberDto login = biz.selectLogin(dto);
+
+		if (login != null) {
+			session.setAttribute("user", login);
+			session.setMaxInactiveInterval(60 * 10);
+			return "redirect:mainlist";
+		} else {
+
+			// 로그인 실패 alert창 처리하기
+			return "login";
+		}
+	}
+
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
 		return "login";
 	}
 
-	
-	
-	
-	
-	
-	
+	@RequestMapping("/guestLogin")
+	public String guestLogin(HttpSession session) {
+		MemberDto guest = new MemberDto(0, null, null, "GUEST", null, "G");
+
+		session.setAttribute("user", guest);
+		session.setMaxInactiveInterval(60 * 10);
+		return "redirect:mainlist";
+	}
+
+	@RequestMapping("/boardinsertform")
+	public String boardinsertform() {
+		return "boardinsert";
+	}
+
+	@PostMapping("/boardinsert")
+	public String boardinsert(BoardDto dto, HttpSession session) {
+
+		MemberDto logindto = (MemberDto) session.getAttribute("user");
+		int mno = logindto.getMno();
+		if (biz.insertBoard(dto, mno) > 0) {
+			System.out.println("성공");
+			return "mainlist";
+		} else {
+			System.out.println("실패");
+			return "insert";
+		}
+
+	}
+
 }

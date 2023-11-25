@@ -14,4 +14,5 @@ public interface Biz {
 	public int insertBoard(BoardDto dto,int mno);
 	public int update(MemberDto dto);
 	public int delete(int mno);
+    public MemberDto selectLogin(MemberDto dto);
 }
