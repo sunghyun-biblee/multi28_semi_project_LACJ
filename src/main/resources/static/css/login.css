@@ -10,7 +10,7 @@ label {
   width: 10rem;
   height: 10rem;
 }
-form {
+#form {
   position: relative;
   background-color: rgba(255, 255, 255, 0.4);
   display: flex;
@@ -24,7 +24,7 @@ form {
   margin: 0 auto;
   transition: all 0.5s;
 }
-form:hover {
+#form:hover {
   box-shadow: 3px 4px 5px 1px rgba(126, 126, 126, 0.6);
 
   transform: translateY(-4px);

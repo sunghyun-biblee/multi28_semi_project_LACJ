@@ -5,13 +5,20 @@
   box-sizing: border-box;
 }
 
+header {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
 a {
   color: black;
   text-decoration: none;
 }
 
 body {
-  background-color: aliceblue;
+  background-color: rgba(162, 199, 232, 0.5);
 }
 
 section {
@@ -91,7 +98,7 @@ footer > div > span {
 }
 
 #container_content {
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: aliceblue;
   margin-bottom: 120px;
 }
@@ -121,8 +128,6 @@ footer > div > span {
   height: 10vh;
   overflow: auto;
 }
-
-
 
 #delete {
   color: rgb(240, 81, 108);
@@ -294,7 +299,7 @@ footer > div > span {
   border: 2px solid #b5bdc5;
   border-radius: 15px;
   box-shadow: 10px 10px 10px 10px #d4d5d6;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 #likebtn,
 #delbtn {

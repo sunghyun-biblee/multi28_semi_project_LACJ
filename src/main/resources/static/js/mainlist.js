@@ -1,17 +1,18 @@
-const heartbox = document.querySelector("#likebtn");
+const heartbox = document.querySelectorAll("#likebtn");
 const changeheart = document.getElementById("changbox");
+let likesCount = $("#likescount").text();
 
 function heartchange() {
   if (changeheart.classList.contains("likesoff")) {
     changeheart.classList.remove("likesoff");
     changeheart.classList.add("likeson");
 
-    var boardlistblikes = $(button).data("id");
     $.ajax({
       type: "post",
       url: "/uplikes",
       contentType: "application/json",
-      data: JSON.stringify("boardlistblikes"),
+      dataType: "json",
+      data: JSON.stringify({ bno: bno }),
       success: function () {
         console.log("성공");
       },

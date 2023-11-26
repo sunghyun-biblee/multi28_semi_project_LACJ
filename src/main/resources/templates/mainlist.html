@@ -34,36 +34,19 @@
               ><img th:src="@{/img/}+${boardlist.bimg}" id="content_img"
             /></a>
             <div id="content">
-              <span th:text="${boardlist.btitle}">
-                <!--#: 데이터 불러오기 -->asdasd
+              <span id="content_title" th:text="${boardlist.btitle}">
+                <!--#: 데이터 불러오기 -->
               </span>
               <p th:text="${boardlist.bcontent}">
                 <!-- # :데이터 불러오기 -->
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Recusandae facere, at, debitis ut est quod architecto facilis
-                officiis ipsam natus placeat quo explicabo minus illum eligendi
-                fugiat! Delectus, perspiciatis fugit.Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Recusandae facere, at, debitis ut
-                est quod architecto facilis officiis ipsam natus placeat quo
-                explicabo minus illum eligendi fugiat! Delectus, perspiciatis
-                fugit.Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Recusandae facere, at, debitis ut est quod architecto facilis
-                officiis ipsam natus placeat quo explicabo minus illum eligendi
-                fugiat! Delectus, perspiciatis fugit.Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Recusandae facere, at, debitis ut
-                est quod architecto facilis officiis ipsam natus placeat quo
-                explicabo minus illum eligendi fugiat! Delectus, perspiciatis
-                fugit.Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Recusandae facere, at, debitis ut est quod architecto facilis
-                officiis ipsam natus placeat quo explicabo minus illum eligendi
-                fugiat! Delectus, perspiciatis fugits.
+                
               </p>
             </div>
             <div id="likedelete">
               <div id="likes">
                 <span>좋아요</span>
-                <span id="likescount"> <!-- #: 데이터 불러오기 -->1 </span>
-                <button id="likebtn" class="buttonbox">
+                <span id="likescount" th:text="${boardlist.blikes}"> <!-- #: 데이터 불러오기 -->1 </span>
+                <button id="likebtn" class="buttonbox" th:attr="data-bno=${boardlist.bno}">
                   <div id="changbox" class="likesoff"></div>
                 </button>
               </div>
