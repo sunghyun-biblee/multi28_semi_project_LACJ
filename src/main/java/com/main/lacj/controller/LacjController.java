@@ -5,8 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +18,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -79,24 +84,44 @@ public class LacjController {
 		return "redirect:mainlist";
 	}
 	
-	@RequestMapping("/login")
-	public String login(MemberDto dto, HttpSession session) {
-
+//	@RequestMapping("/login")
+//	public String login(MemberDto dto, HttpSession session) {
+//
+//		MemberDto login = biz.selectLogin(dto);
+//
+//		if (login != null) {
+//			session.setAttribute("user", login);
+//			session.setMaxInactiveInterval(60 * 10);
+//			return "redirect:mainlist";
+//		}else {
+//			// 로그인 실패 alert창 처리하기
+//			return "logback";
+//		}
+//	}
+	
+	@RequestMapping(value="/checkLogin", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> checkLogin(@RequestBody MemberDto dto, HttpSession session) {
+		
+		
 		MemberDto login = biz.selectLogin(dto);
-
-		if (login != null) {
+		boolean check = false;
+		
+		if(login != null) {
 			session.setAttribute("user", login);
-			session.setMaxInactiveInterval(60 * 10);
-			return "redirect:mainlist";
-		}else {
-			// 로그인 실패 alert창 처리하기
-			return "logback";
+			session.setMaxInactiveInterval(60*10);
+			check = true;
 		}
+		
+		Map<String, Boolean> map = new HashMap<>();
+		map.put("check", check);		
+		return map;
 	}
-	@RequestMapping("/loginfail")
-	public String loginfail() {
-		return "login";
-	}
+	
+//	@RequestMapping("/loginfail")
+//	public String loginfail() {
+//		return "login";
+//	}
 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
