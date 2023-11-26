@@ -30,12 +30,11 @@ public class LacjController {
 
 	@Autowired
 	private Biz biz;
-	
+
 	@RequestMapping("/none")
 	public String none() {
 		return "none";
 	}
-	
 
 	@RequestMapping("/mainlist")
 	public String mainlist(Model model) {
@@ -61,38 +60,42 @@ public class LacjController {
 	}
 
 	@RequestMapping("/mypage")
-    public String mypage(HttpSession session, Model model) {
-        MemberDto dto = (MemberDto)session.getAttribute("user");
-        model.addAttribute("dto",dto); 
+	public String mypage(HttpSession session, Model model) {
+		MemberDto dto = (MemberDto) session.getAttribute("user");
+		model.addAttribute("dto", dto);
 
-        if(dto.getMstatus() != "G") {
-            return "mypage";
-        }else {
-            return "mypagefail";    //alert창으로 '게스트는 마이페이지가 존제하지않습니디...'
-        }
-    }
-	
-	 
-	
+		int mno = dto.getMno();
+		int totalPosts = biz.countPostsByUser(mno);
+
+		model.addAttribute("totalPosts", totalPosts);
+
+		if (dto.getMstatus() != "G") {
+			return "mypage";
+		} else {
+			return "mypagefail"; // alert창으로 '게스트는 마이페이지가 존제하지않습니디...'
+		}
+	}
+
 	@RequestMapping("/mypagefail")
 	public String mypagefail() {
 		return "redirect:mainlist";
 	}
-	
+
 	@RequestMapping("/login")
 	public String login(MemberDto dto, HttpSession session) {
 
 		MemberDto login = biz.selectLogin(dto);
-
+		
 		if (login != null) {
 			session.setAttribute("user", login);
 			session.setMaxInactiveInterval(60 * 10);
 			return "redirect:mainlist";
-		}else {
+		} else {
 			// 로그인 실패 alert창 처리하기
 			return "logback";
 		}
 	}
+
 	@RequestMapping("/loginfail")
 	public String loginfail() {
 		return "login";
@@ -119,53 +122,66 @@ public class LacjController {
 	}
 
 	@PostMapping("/boardinsert")
-	public String boardinsert(BoardDto dto, HttpSession session, UploadFile uploadFile, BindingResult result ) {
+	public String boardinsert(BoardDto dto, HttpSession session, UploadFile uploadFile, BindingResult result) {
 
 		MemberDto logindto = (MemberDto) session.getAttribute("user");
 		int mno = logindto.getMno();
 		String btitle = dto.getBtitle();
 		String bcontent = dto.getBcontent();
-		
+
 		MultipartFile file = uploadFile.getFile();
-		String bimg = file.getOriginalFilename();	//업로드 되어 controller로 넘어온 filedml 실제 이름
-		//System.out.println(filename);
-		
+		String bimg = file.getOriginalFilename(); // 업로드 되어 controller로 넘어온 filedml 실제 이름
+		// System.out.println(filename);
+
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
-		
-		
+
 		if (biz.insertBoard(btitle, bcontent, bimg, mno) > 0) {
-			
+
 			try {
 				inputStream = file.getInputStream();
-				
+
 				String path = "C:\\workspace\\6.FrameWork\\SemiProject_LACJ\\src\\main\\resources\\static\\img";
 				File storage = new File(path);
-				if(!storage.exists()) {	//존재여부 확인
-					storage.mkdirs();	//없으면 디렉토리 만들기(폴더생성)
+				if (!storage.exists()) { // 존재여부 확인
+					storage.mkdirs(); // 없으면 디렉토리 만들기(폴더생성)
 				}
-				
-				File newfile = new File(path+"/"+bimg);
-				if(!newfile.exists()) {
+
+				File newfile = new File(path + "/" + bimg);
+				if (!newfile.exists()) {
 					newfile.createNewFile();
 				}
-				
+
 				System.out.println(newfile.getPath());
 				outputStream = new FileOutputStream(newfile);
-				
+
 				int read = 0;
-				byte[] b = new byte[(int)file.getSize()];
-				while( (read=inputStream.read(b)) != -1 ) {
-					outputStream.write(b,0,read);
+				byte[] b = new byte[(int) file.getSize()];
+				while ((read = inputStream.read(b)) != -1) {
+					outputStream.write(b, 0, read);
 				}
-				
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-				return "redirect:mainlist";
-			}else {
+			return "redirect:mainlist";
+		} else {
 			return "insert";
 		}
 	}
-}
 
+	@RequestMapping("/mypagedetail")
+	public String mypagedetail(HttpSession session, Model model) {
+		MemberDto dto = (MemberDto) session.getAttribute("user");
+		model.addAttribute("dto", dto);
+
+		if (dto.getMstatus() != "G") {
+			return "mypagedetail";
+		} else {
+			return "mypagefail"; // alert창으로 '게스트는 마이페이지가 존제하지않습니디...'
+		}
+	}
+
+//	---------- 자바스크립트 + DB ----------------
+
+}

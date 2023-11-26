@@ -17,4 +17,5 @@ public interface Biz {
 	public int update(MemberDto dto);
 	public int delete(int mno);
     public MemberDto selectLogin(MemberDto dto);
+    public int countPostsByUser(int mno);
 }

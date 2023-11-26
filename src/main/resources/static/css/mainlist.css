@@ -122,11 +122,7 @@ footer > div > span {
   overflow: auto;
 }
 
-.imgbutton {
-  margin-left: 10px;
-  width: 24px;
-  height: 24px;
-}
+
 
 #delete {
   color: rgb(240, 81, 108);
@@ -299,4 +295,30 @@ footer > div > span {
   border-radius: 15px;
   box-shadow: 10px 10px 10px 10px #d4d5d6;
   margin-bottom: 100px;
+}
+#likebtn,
+#delbtn {
+  border: none;
+  background-color: #f0ffff;
+  cursor: pointer;
+}
+
+.buttonbox > div {
+  margin-left: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.likesoff {
+  background-image: url("/img/line-heart.png");
+  background-size: cover;
+}
+.likeson {
+  background-image: url("/img/color-heart.png");
+  background-size: cover;
+}
+
+.delete {
+  background-image: url("/img/warning.png");
+  background-size: cover;
 }

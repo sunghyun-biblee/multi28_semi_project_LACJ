@@ -3,6 +3,7 @@ package com.main.lacj.model.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.main.lacj.model.dto.BoardDto;
@@ -22,4 +23,7 @@ public interface Mapper {
 	
     @Select(" SELECT * FROM MULTIMEMBER WHERE MID = #{mid} AND MPW = #{mpw}  ")
     MemberDto selectLogin(MemberDto dto);
+    
+    @Select(" SELECT COUNT(*) FROM MULTIBOARD WHERE mno = #{mno}")
+    int countPostsByUser(@Param("mno") int mno);
 }

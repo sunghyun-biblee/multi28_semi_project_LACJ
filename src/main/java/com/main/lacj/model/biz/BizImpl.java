@@ -52,6 +52,11 @@ public class BizImpl implements Biz{
         return mapper.selectLogin(dto);
     }
 
+	@Override
+	public int countPostsByUser(int mno) {
+		return mapper.countPostsByUser(mno);
+	}
+
 	
 
 }

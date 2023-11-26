@@ -36,19 +36,23 @@
         <div id="container2">
           <div>
             <div id="mypagename">
-              <span style="color: skyblue" th:text="|${mname} 회원명|"
+              <span style="color: skyblue" th:text="|${dto.mname}님|"
                 >조주안이</span
               >
             </div>
             <div id="c2">
-              <div class="mypageWL"><span>100</span><span>wirte</span></div>
+              <div class="mypageWL">
+                <span th:text="${totalPosts}">작성글 개수</span
+                ><span>wirte</span>
+              </div>
               <div class="mypageWL"><span>211</span><span>likes</span></div>
             </div>
           </div>
+          <div id="mycontent_text">123</div>
           <div id="c3">
             <button
               type="submit"
-              onclick="location.href='http://www.naver.com/'"
+              onclick="location.href='/mypagedetail'"
               id="mainbtn"
             >
               정보수정
