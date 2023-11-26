@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,12 +11,13 @@
       href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
       rel="stylesheet"
     />
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
     <div id="container">
       <div id="conatiner_box">
         <div id="container_tran">
-          <form action="/login" method="post">
+          <!--  <form action="/login" method="post"> -->
             <div id="registImg"></div>
             <div id="regist">
               <div class="inputbox">
@@ -31,7 +32,7 @@
                 </div>
                 <input type="password" name="mpw" placeholder="********" />
               </div>
-              <button type="submit" id="loginBox">LOGIN</button>
+              <input type="button" id="loginBox" value="login">
             </div>
             <div id="more">
               <div>
@@ -44,10 +45,40 @@
             <div id="footer">
               <span>Copyright 2023 LACJ inc. all rights reserved. </span>
             </div>
-          </form>
+          <!-- </form>  -->
         </div>
       </div>
     </div>
     <div class="overlay"></div>
+    
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#loginBox").on("click", function () {
+            let mid = $("input[name='mid']").val().trim();
+            let mpw = $("input[name='mpw']").val().trim();
+            let loginVal = { "mid": mid, "mpw": mpw };
+
+            $.ajax({
+                type: "POST",
+                url: "/checkLogin",  // 실제로는 로그인을 처리할 엔드포인트의 주소로 변경해야 합니다.
+                data: JSON.stringify(loginVal),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.check == true) {
+                        alert("로그인 성공!");
+                        location.href = "/mainlist";
+                    } else {
+                        alert("아이디 또는 비밀번호를 확인하세요.");
+                    }
+                },
+                error: function () {
+                    alert("서버 오류가 발생했습니다.");
+                }
+            });
+        });
+    });
+	</script>
+
   </body>
 </html>
