@@ -118,6 +118,27 @@ public class LacjController {
 		return map;
 	}
 	
+	@RequestMapping(value="/uplikes")
+	@ResponseBody
+	public Map<String, Integer> uplikes(@RequestBody BoardDto dto, HttpSession session) {
+		int bno = dto.getBno();
+		BoardDto dto1 = biz.boardSelectOne(bno);
+		
+		int count = 0;
+		count = dto1.getBlikes();
+		int blikes = 0;
+		
+		blikes = count+1;
+		biz.likesUp(blikes, bno);
+		
+		Map<String, Integer> map = new HashMap<>();
+		map.put("count", blikes);
+		return map;
+		
+	}
+	
+	
+	
 //	@RequestMapping("/loginfail")
 //	public String loginfail() {
 //		return "login";
