@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org%22%3E/">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/mypage.css" />
+    <link
+      rel="stylesheet"
+      href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
+      type="text/css"
+    />
+    <script type="text/javascript"></script>
+  </head>
+  <body>
+    <header>
+      <div id="container_header">
+        <div id="teamname">
+          <a href="/mainlist" style="color: white; font-weight: 700">LACJ</a>
+        </div>
+        <ul>
+          <li id="myprofile">
+            <img src="/img/id.png" alt="" />
+            <ul id="dropdown">
+              <li><a href="/mypage">마이페이지</a></li>
+              <li><a href="/boardinsertform">글 작성</a></li>
+              <li><a href="/logout">로그아웃</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <section>
+      <div id="container">
+        <div id="container1"></div>
+        <div id="container2">
+          <div>
+            <form action="/" method="post">
+              <span th:text="#">이름</span>
+              <br />
+              <span th:text="#">아이디</span>
+              <br />
+              <span>비밀번호</span
+              ><input type="text" name="mpw" required="required" />
+            </form>
+          </div>
+          <div id="c3">
+            <button
+              type="submit"
+              onclick="alert('제출이 완료되었습니다')"
+              id="mainbtn"
+            >
+              <!-- 알랏 창으로 제출이 완료되었습니다 하고 리턴은 마이리스트로 -->
+              제출
+            </button>
+            <button
+              type="submit"
+              onclick="location.href='/mainlist'"
+              id="mainbtn"
+            >
+              뒤로가기
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <span>조성현</span> <span>주현록</span> <span>안해림</span>
+        <span>이한빈</span>
+      </div>
+    </footer>
+  </body>
+</html>
