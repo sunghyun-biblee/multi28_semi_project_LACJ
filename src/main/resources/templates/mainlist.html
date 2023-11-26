@@ -34,21 +34,44 @@
               ><img th:src="@{/img/}+${boardlist.bimg}" id="content_img"
             /></a>
             <div id="content">
-              <span th:text="${boardlist.btitle}"> <!--#: 데이터 불러오기 -->asdasd </span>
+              <span th:text="${boardlist.btitle}">
+                <!--#: 데이터 불러오기 -->asdasd
+              </span>
               <p th:text="${boardlist.bcontent}">
                 <!-- # :데이터 불러오기 -->
-                
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Recusandae facere, at, debitis ut est quod architecto facilis
+                officiis ipsam natus placeat quo explicabo minus illum eligendi
+                fugiat! Delectus, perspiciatis fugit.Lorem ipsum dolor, sit amet
+                consectetur adipisicing elit. Recusandae facere, at, debitis ut
+                est quod architecto facilis officiis ipsam natus placeat quo
+                explicabo minus illum eligendi fugiat! Delectus, perspiciatis
+                fugit.Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Recusandae facere, at, debitis ut est quod architecto facilis
+                officiis ipsam natus placeat quo explicabo minus illum eligendi
+                fugiat! Delectus, perspiciatis fugit.Lorem ipsum dolor, sit amet
+                consectetur adipisicing elit. Recusandae facere, at, debitis ut
+                est quod architecto facilis officiis ipsam natus placeat quo
+                explicabo minus illum eligendi fugiat! Delectus, perspiciatis
+                fugit.Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Recusandae facere, at, debitis ut est quod architecto facilis
+                officiis ipsam natus placeat quo explicabo minus illum eligendi
+                fugiat! Delectus, perspiciatis fugits.
               </p>
             </div>
             <div id="likedelete">
               <div id="likes">
                 <span>좋아요</span>
                 <span id="likescount"> <!-- #: 데이터 불러오기 -->1 </span>
-                <img src="/img/heart.png" alt="" class="imgbutton" />
+                <button id="likebtn" class="buttonbox">
+                  <div id="changbox" class="likesoff"></div>
+                </button>
               </div>
               <div id="delete">
                 <span>삭제</span>
-                <img src="/img/warning.png" alt="" class="imgbutton" />
+                <button id="delbtn" class="buttonbox">
+                  <div class="delete"></div>
+                </button>
               </div>
             </div>
           </div>
@@ -86,6 +109,12 @@
         </div>
       </div>
     </section>
+    <div id="overlay">
+      <div class="wave one"></div>
+      <div class="wave two"></div>
+      <div class="wave three"></div>
+      <div class="wave four"></div>
+    </div>
 
     <footer>
       <div>
@@ -93,5 +122,6 @@
         <span>이한빈</span>
       </div>
     </footer>
+    <script src="/js/mainlist.js"></script>
   </body>
 </html>
