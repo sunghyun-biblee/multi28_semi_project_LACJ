@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.main.lacj.model.dto.BoardDto;
 import com.main.lacj.model.dto.MemberDto;
@@ -24,6 +25,12 @@ public interface Mapper {
     @Select(" SELECT * FROM MULTIMEMBER WHERE MID = #{mid} AND MPW = #{mpw}  ")
     MemberDto selectLogin(MemberDto dto);
     
-    @Select(" SELECT COUNT(*) FROM MULTIBOARD WHERE mno = #{mno}")
+    @Select(" SELECT COUNT(*) FROM MULTIBOARD WHERE MNO = #{mno}")
     int countPostsByUser(@Param("mno") int mno);
+    
+    @Update(" UPDATE MULTIBOARD SET BLIKES = #{blikes} WHERE BNO = #{bno} ")
+    int likesUp(@Param("blikes") int blikes, @Param("bno") int bno);
+    
+    @Select(" SELECT * FROM MULTIBOARD WHERE BNO = #{bno} ")
+    BoardDto boardSelectOne(@Param("bno") int bno);
 }

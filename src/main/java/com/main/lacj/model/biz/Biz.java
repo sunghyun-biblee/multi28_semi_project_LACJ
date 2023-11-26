@@ -18,4 +18,6 @@ public interface Biz {
 	public int delete(int mno);
     public MemberDto selectLogin(MemberDto dto);
     public int countPostsByUser(int mno);
+    public int likesUp(int blikes, int bno);
+    public BoardDto boardSelectOne(int bno);
 }

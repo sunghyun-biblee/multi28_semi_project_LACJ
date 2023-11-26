@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/css/mainlist.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
     <header>
@@ -34,55 +35,65 @@
               ><img th:src="@{/img/}+${boardlist.bimg}" id="content_img"
             /></a>
             <div id="content">
-              <span th:text="${boardlist.btitle}"> <!--#: 데이터 불러오기 -->asdasd </span>
+              <span th:text="${boardlist.btitle}">
+                <!--#: 데이터 불러오기 -->asdasd
+              </span>
               <p th:text="${boardlist.bcontent}">
                 <!-- # :데이터 불러오기 -->
-                
               </p>
             </div>
             <div id="likedelete">
               <div id="likes">
                 <span>좋아요</span>
-                <span id="likescount"> <!-- #: 데이터 불러오기 -->1 </span>
-                <img src="/img/heart.png" alt="" class="imgbutton" />
+                <span id="likescount" th:text="${boardlist.blikes}"></span
+                >
+                <button
+                  id="likebtn"
+                  class="buttonbox"
+                  th:attr="data-id=${boardlist.bno}"
+                >
+                  <div id="changbox" class="likesoff"></div>
+                </button>
               </div>
               <div id="delete">
                 <span>삭제</span>
-                <img src="/img/warning.png" alt="" class="imgbutton" />
+                <button id="delbtn" class="buttonbox">
+                  <div class="delete"></div>
+                </button>
               </div>
             </div>
-          </div>
 
-          <div id="container_coment">
-            <div id="coment_box">
-              <span>#댓글 작성</span>
-              <textarea
-                name="#"
-                id=""
-                cols="30"
-                rows="10"
-                placeholder="  게시물에 댓글을 작성해보세요!"
-              ></textarea>
-              <div>
-                <input type="submit" value="작성" id="commentsubmit" />
+            <div id="container_coment">
+              <div id="coment_box">
+                <span>#댓글 작성</span>
+                <textarea
+                  name="#"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  placeholder="  게시물에 댓글을 작성해보세요!"
+                ></textarea>
+                <div>
+                  <input type="submit" value="작성" id="commentsubmit" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- ------------------------------------------------------------------------- -->
-      <div id="container_pagenav">
-        <div id="pageination">
-          <ul>
-            <li><a href="#" class="mv">◀</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#" class="mv">▶</a></li>
-          </ul>
+        <!-- ------------------------------------------------------------------------- -->
+        <div id="container_pagenav">
+          <div id="pageination">
+            <ul>
+              <li><a href="#" class="mv">◀</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#" class="mv">▶</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -93,5 +104,6 @@
         <span>이한빈</span>
       </div>
     </footer>
+    <script type="text/javascript" src="/js/mainlist.js"></script>
   </body>
 </html>

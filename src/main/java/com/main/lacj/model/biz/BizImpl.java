@@ -57,6 +57,16 @@ public class BizImpl implements Biz{
 		return mapper.countPostsByUser(mno);
 	}
 
+	@Override
+	public int likesUp(int blikes, int bno) {
+		return mapper.likesUp(blikes, bno);
+	}
+
+	@Override
+	public BoardDto boardSelectOne(int bno) {
+		return mapper.boardSelectOne(bno);
+	}
+
 	
 
 }
