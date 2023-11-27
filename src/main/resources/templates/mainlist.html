@@ -30,7 +30,7 @@
 			<div id="container_title">게시물 목록</div>
 			<div th:each="boardlist:${list}" id="container_content">
 				<div id="container_space">
-					<a href=""><img
+					<a th:href="@{'/boarddetail?bno=' + ${boardlist.bno}}"><img
 						th:src="@{/img/}+${boardlist.bimg}" id="content_img" /></a>
 					<div id="content">
 						<span th:text="${boardlist.btitle}"> <!--#: 데이터 불러오기 -->asdasd

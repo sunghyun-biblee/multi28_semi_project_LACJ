@@ -8,9 +8,11 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,15 +52,58 @@ public class LacjController {
 //	}
 
 	@RequestMapping("/registinsert")
-	public String registinsert(MemberDto dto) {
+    public String registinsert(MemberDto dto, UploadFile uploadFile) {
 
-		if (biz.insertRegi(dto) > 0) {
-			return "login";
-		} else {
-			return "redirect:regist";
-		}
+        if (uploadFile.getFile() != null) {
 
-	}
+            MultipartFile file = uploadFile.getFile();
+            
+            String originalBimg = file.getOriginalFilename();
+            String extension = FilenameUtils.getExtension(originalBimg);
+            String bimg = UUID.randomUUID().toString() + "." + extension;
+            
+            InputStream inputStream = null;
+            OutputStream outputStream = null;
+            dto.setMimg(bimg);
+
+            if (biz.insertRegi(dto) > 0) {
+
+                try {
+                    inputStream = file.getInputStream();
+
+                    String path = "C:\\workspace\\6.FrameWork\\SemiProject_LACJ\\src\\main\\resources\\static\\img\\profile";
+                    File storage = new File(path);
+                    if(!storage.exists()) {    //존재여부 확인
+                        storage.mkdirs();    //없으면 디렉토리 만들기(폴더생성)
+                    }
+
+                    File newfile = new File(path+"/"+bimg);
+                    if(!newfile.exists()) {
+                        newfile.createNewFile();
+                    }
+
+                    System.out.println(newfile.getPath());
+                    outputStream = new FileOutputStream(newfile);
+
+                    int read = 0;
+                    byte[] b = new byte[(int)file.getSize()];
+                    while( (read=inputStream.read(b)) != -1 ) {
+                        outputStream.write(b,0,read);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return "login";
+
+        }else if (biz.insertRegi(dto) > 0) {
+            return "login";
+        } else {
+            return "redirect:regist";
+        }
+    }
 
 	@RequestMapping("/regist")
 	public String regist() {
@@ -244,16 +289,20 @@ public class LacjController {
 		int mno = logindto.getMno();
 		String btitle = dto.getBtitle();
 		String bcontent = dto.getBcontent();
+		String bpublic = dto.getBpublic();
 		
 		MultipartFile file = uploadFile.getFile();
-		String bimg = file.getOriginalFilename();	//업로드 되어 controller로 넘어온 filedml 실제 이름
 		//System.out.println(filename);
 		
+		String originalBimg = file.getOriginalFilename();
+        String extension = FilenameUtils.getExtension(originalBimg);
+        String bimg = UUID.randomUUID().toString() + "." + extension;
+        
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 		
 		
-		if (biz.insertBoard(btitle, bcontent, bimg, mno) > 0) {
+		if (biz.insertBoard(btitle, bcontent, bimg, mno, bpublic) > 0) {
 			
 			try {
 				inputStream = file.getInputStream();
@@ -288,21 +337,36 @@ public class LacjController {
 	}
 	
 	@RequestMapping("/mainlist")
-	public String pagenation(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
+	public String pagenation(@RequestParam(name = "page", defaultValue = "1") int page, Model model, HttpSession session) {
 	    int pageSize = 3;
 	    int currentPage = Math.max(1, page);
 	    int offset = (currentPage - 1) * pageSize;
-
-	    List<BoardDto> boardList = biz.getBoards(offset, pageSize);
-	    model.addAttribute("list", boardList);
-
-	    int boardCount = biz.getBoardCount();
-	    int totalPages = (int) Math.ceil((double) boardCount / pageSize);
-
-	    model.addAttribute("currentPage", currentPage);
-	    model.addAttribute("totalPages", totalPages);
-
-	    return "mainlist";
+	    MemberDto dto = (MemberDto)session.getAttribute("user");
+	    
+	    if(dto.getMstatus() == null) {
+		    	
+		    List<BoardDto> boardList = biz.getBoards(offset, pageSize);
+		    model.addAttribute("list", boardList);
+	
+		    int boardCount = biz.getBoardCount();
+		    int totalPages = (int) Math.ceil((double) boardCount / pageSize);
+	
+		    model.addAttribute("currentPage", currentPage);
+		    model.addAttribute("totalPages", totalPages);
+	
+		    return "mainlist";
+	    }else {
+	    	List<BoardDto> boardList = biz.getGuestBoards(offset, pageSize);
+		    model.addAttribute("list", boardList);
+	
+		    int boardCount = biz.getBoardCount();
+		    int totalPages = (int) Math.ceil((double) boardCount / pageSize);
+	
+		    model.addAttribute("currentPage", currentPage);
+		    model.addAttribute("totalPages", totalPages);
+	
+		    return "mainlist";
+	    }
 	}
 	
 	
@@ -315,6 +379,18 @@ public class LacjController {
 		return "mypagedetail";
 	}
 	
+	@RequestMapping("/boarddetail")
+	public String boarddetail(@RequestParam(name="bno")int bno, HttpSession session, Model model) {
+		
+		BoardDto dto = biz.boardSelectOne(bno);
+		List<CommentDto> list = biz.commentSelectAll(bno);
+		
+		//session.setAttribute("user", session.getAttribute("user"));
+		model.addAttribute("list", list);
+		model.addAttribute("dto", dto);
+		
+		return "boarddetail";
+	}
 	
 
 }

@@ -38,8 +38,8 @@ public class BizImpl implements Biz{
 	}
 	
 	@Override
-	public int insertBoard(String btitle, String bcontent, String bimg, int mno) {
-		return mapper.insertBoard(btitle,bcontent,bimg,mno);
+	public int insertBoard(String btitle, String bcontent, String bimg, int mno, String bpublic) {
+		return mapper.insertBoard(btitle,bcontent,bimg,mno,bpublic);
 	}
 
 	@Override
@@ -93,8 +93,9 @@ public class BizImpl implements Biz{
         }
 
 	@Override
-	public int countTotalLikes(int mno) {
-		return mapper.countTotalLikes(mno);
+	public Integer countTotalLikes(int mno) {
+		Integer result = mapper.countTotalLikes(mno); 
+		return result != null ? result : 0;
 	}
 
     @Override
@@ -106,6 +107,16 @@ public class BizImpl implements Biz{
         
         return mapper.addcomment(bno,comment);
     }
+
+	@Override
+	public List<CommentDto> commentSelectAll(int bno) {
+		return mapper.commentSelectAll(bno);
+	}
+
+	@Override
+	public List<BoardDto> getGuestBoards(int offset, int pageSize) {
+		return mapper.getGuestBoards(offset, pageSize);
+	}
 
 	
 

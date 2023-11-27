@@ -28,7 +28,7 @@
           메인화면
         </button>
       </div>
-      <form action="/registinsert" method="post">
+      <form action="/registinsert" method="post" enctype="multipart/form-data">
         <label for="p1">이름</label>
         <input
           autocomplete="off"
@@ -83,7 +83,7 @@
         <div id="filebtn">
           <span class="filebtn_text"><p>이미지 등록</p></span>
           <label for="p6" class="cp6"><span>파일선택</span></label>
-          <input type="file" id="p6" style="display: none" />
+          <input type="file" id="p6" style="display: none" name="file"/>
         </div>
         <div id="registbtn">
           <input type="submit" value="확인" />

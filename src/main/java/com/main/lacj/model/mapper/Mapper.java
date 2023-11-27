@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.main.lacj.model.dto.BoardDto;
+import com.main.lacj.model.dto.CommentDto;
 import com.main.lacj.model.dto.MemberDto;
 
 @org.apache.ibatis.annotations.Mapper
@@ -20,8 +21,8 @@ public interface Mapper {
 	@Insert(" INSERT INTO MULTIMEMBER VALUES(NULL, #{mid}, #{mpw}, #{mname}, #{mimg}, #{mstatus} )")
 	public int insertRegi(MemberDto dto);
 
-	@Insert(" INSERT INTO MULTIBOARD VALUE(NULL, #{btitle}, #{bcontent}, NOW(), #{bimg}, 0, #{mno}, NULL )")
-	public int insertBoard(String btitle, String bcontent, String bimg, int mno);
+	@Insert(" INSERT INTO MULTIBOARD VALUE(NULL, #{btitle}, #{bcontent}, NOW(), #{bimg}, 0, #{mno}, #{bpublic} )")
+	public int insertBoard(String btitle, String bcontent, String bimg, int mno, String bpublic);
 
 	@Select(" SELECT * FROM MULTIMEMBER WHERE MID = #{mid} AND MPW = #{mpw}  ")
 	MemberDto selectLogin(MemberDto dto);
@@ -37,7 +38,9 @@ public interface Mapper {
 
 	@Select(" SELECT * FROM MULTIBOARD ORDER BY BNO DESC LIMIT #{offset}, #{pageSize} ")
 	List<BoardDto> getBoards(int offset, int pageSize);
-
+	
+	@Select(" SELECT * FROM MULTIBOARD WHERE BPUBLIC IS NULL ORDER BY BNO DESC LIMIT #{offset}, #{pageSize} ")
+	List<BoardDto> getGuestBoards(int offset, int pageSize);
 	@Select(" SELECT COUNT(*) FROM MULTIBOARD ")
 	int getBoardCount();
 
@@ -48,7 +51,7 @@ public interface Mapper {
 	List<BoardDto> getMyWrite(@Param("mno") int mno);
 
 	@Select(" SELECT SUM(BLIKES) FROM MULTIBOARD WHERE MNO = #{mno} ")
-	int countTotalLikes(int mno);
+	Integer countTotalLikes(int mno);
 
 	@Update(" UPDATE MULTIMEMBER SET MPW = #{mpw} WHERE MNO= #{mno} ")
 	public int updatemember(MemberDto dto);
@@ -59,4 +62,6 @@ public interface Mapper {
 	@Insert(" INSERT INTO MULTICOMMENT VALUES( NULL, #{comment} ,#{bno} ) ")
 	int addcomment(int bno, String comment);
 
+	@Select(" SELECT * FROM MULTICOMMENT WHERE BNO = #{bno} ")
+	List<CommentDto> commentSelectAll(int bno);
 }
