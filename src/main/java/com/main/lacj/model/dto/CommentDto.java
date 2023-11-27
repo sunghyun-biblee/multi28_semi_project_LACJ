@@ -3,7 +3,7 @@ package com.main.lacj.model.dto;
 public class CommentDto {
     private int commentnum;
     private String comment;
-    private int mno; // Foreign Key
+    private int bno; // Foreign Key
 	public CommentDto() {
 		super();
 	}
@@ -11,7 +11,7 @@ public class CommentDto {
 		super();
 		this.commentnum = commentnum;
 		this.comment = comment;
-		this.mno = mno;
+		this.bno = mno;
 	}
 	public int getCommentnum() {
 		return commentnum;
@@ -25,11 +25,11 @@ public class CommentDto {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public int getMno() {
-		return mno;
+	public int getBno() {
+		return bno;
 	}
-	public void setMno(int mno) {
-		this.mno = mno;
+	public void setBno(int mno) {
+		this.bno = mno;
 	}
 
 

@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
 }
 
 header {
@@ -205,7 +206,7 @@ footer > div > span {
   height: 50px;
 }
 
-#commentsubmit {
+.commentsubmit {
   display: flex;
   justify-content: center;
   background-color: rgb(89, 164, 229);
@@ -364,7 +365,7 @@ button {
   color: rgb(61, 172, 216);
 }
 
-#commentsubmit,
+.commentsubmit,
 header {
   box-shadow: 0px 2px 2px 2px #b5bdc5;
 }

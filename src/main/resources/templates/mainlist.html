@@ -1,99 +1,134 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
-<link rel="stylesheet" href="/css/mainlist.css" />
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-</head>
-<body>
-	<header>
-		<div id="container_header">
-			<div id="teamname">
-				<span>LACJ</span>
-			</div>
-			<ul>
-				<li id="myprofile"><img src="/img/id.png" alt="" />
-					<ul id="dropdown">
-						<li><a href="mypage">마이페이지</a></li>
-						<li><a href="boardinsertform">글 작성</a></li>
-						<li><a href="logout">로그아웃</a></li>
-					</ul></li>
-			</ul>
-		</div>
-	</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/mainlist.css" />
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div id="container_header">
+        <div id="teamname">
+          <span>LACJ</span>
+        </div>
+        <ul>
+          <li id="myprofile">
+            <img src="/img/id.png" alt="" />
+            <ul id="dropdown">
+              <li><a href="mypage">마이페이지</a></li>
+              <li><a href="boardinsertform">글 작성</a></li>
+              <li><a href="logout">로그아웃</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
 
-	<section>
-		<div id="container">
-			<div id="container_title">게시물 목록</div>
-			<div th:each="boardlist:${list}" id="container_content">
-				<div id="container_space">
-					<a href=""><img
-						th:src="@{/img/}+${boardlist.bimg}" id="content_img" /></a>
-					<div id="content">
-						<span th:text="${boardlist.btitle}"> <!--#: 데이터 불러오기 -->asdasd
-						</span>
-						<p th:text="${boardlist.bcontent}">
-							<!-- # :데이터 불러오기 -->
-						</p>
-					</div>
-					<div id="likedelete">
-						<div id="likes">
-							<span>좋아요</span>
-							<button id="likebtn" class="buttonbox likebtn2"
-								th:attr="data-id=${boardlist.bno}">
-								<span class="likescount" th:text="${boardlist.blikes}"></span>
-								<div class="off changbox"></div>
-							</button>
-						</div>
-						<div id="delete">
-							<span>삭제</span>
-							<button id="delbtn" class="buttonbox">
-								<div class="delete"></div>
-							</button>
-						</div>
-					</div>
-
-					<div id="container_coment">
-						<div id="coment_box">
-							<span>#댓글 작성</span>
-							<textarea name="#" id="" cols="30" rows="10"
-								placeholder="  게시물에 댓글을 작성해보세요!"></textarea>
-							<div>
-								<input type="submit" value="작성" id="commentsubmit" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- ------------------------------------------------------------------------- -->
-			<div id="container_pagenav">
-                <div id="pagenation">
-                    <ul>
-                        <li><a th:if="${currentPage > 1}"
-                            th:href="@{'/mainlist?page=' + ${(currentPage > 1) ? currentPage - 1 : 1}}"
-                            class="mv">◀</a></li>
-
-                        <li th:each="page : ${#numbers.sequence(1, totalPages)}"><a
-                            th:href="@{'/mainlist?page=' + ${page}}" th:text="${page}"></a>
-                        </li>
-
-                        <li><a th:if="${currentPage < totalPages}"
-                            th:href="@{'/mainlist?page=' + ${(currentPage < totalPages) ? currentPage + 1 : totalPages}}"
-                            class="mv">▶</a></li>
-                    </ul>
-                </div>
+    <section>
+      <div id="container">
+        <div id="container_title">게시물 목록</div>
+        <div th:each="boardlist:${list}" id="container_content">
+          <div id="container_space">
+            <a href="#">
+              <img th:src="@{/img/}+${boardlist.bimg}" id="content_img" />
+            </a>
+            <div id="content">
+              <span th:text="${boardlist.btitle}">
+                <!--#: 데이터 불러오기 -->asdasd
+              </span>
+              <p th:text="${boardlist.bcontent}">
+                <!-- # :데이터 불러오기 -->
+              </p>
             </div>
-	</section>
+            <div id="likedelete">
+              <div id="likes">
+                <span>좋아요</span>
+                <button
+                  id="likebtn"
+                  class="buttonbox likebtn2"
+                  th:attr="data-id=${boardlist.bno}"
+                >
+                  <span class="likescount" th:text="${boardlist.blikes}"></span>
+                  <div class="off changbox"></div>
+                </button>
+              </div>
+              <div id="delete">
+                <span>삭제</span>
+                <button id="delbtn" class="buttonbox">
+                  <div class="delete"></div>
+                </button>
+              </div>
+            </div>
 
-	<footer>
-		<div>
-			<span>조성현</span> <span>주현록</span> <span>안해림</span> <span>이한빈</span>
-		</div>
-	</footer>
-	<script type="text/javascript" src="/js/mainlist.js"></script>
-</body>
+            <div id="container_coment">
+              <div id="coment_box">
+                <span>#댓글 작성</span>
+                <textarea
+                  class="commentbox"
+                  name="comment"
+                  cols="30"
+                  rows="10"
+                  placeholder="  게시물에 댓글을 작성해보세요!"
+                ></textarea>
+
+                <div>
+                  <input
+                    type="submit"
+                    value="작성"
+                    class="commentsubmit"
+                    th:attr="data-bno=${boardlist.bno}"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------------------------------- -->
+        <div id="container_pagenav">
+          <div id="pagenation">
+            <ul>
+              <li>
+                <a
+                  th:if="${currentPage > 1}"
+                  th:href="@{'/mainlist?page=' + ${(currentPage > 1) ? currentPage - 1 : 1}}"
+                  class="mv"
+                  >◀</a
+                >
+              </li>
+
+              <li th:each="page : ${#numbers.sequence(1, totalPages)}">
+                <a
+                  th:href="@{'/mainlist?page=' + ${page}}"
+                  th:text="${page}"
+                ></a>
+              </li>
+
+              <li>
+                <a
+                  th:if="${currentPage < totalPages}"
+                  th:href="@{'/mainlist?page=' + ${(currentPage < totalPages) ? currentPage + 1 : totalPages}}"
+                  class="mv"
+                  >▶</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <span>조성현</span> <span>주현록</span> <span>안해림</span>
+        <span>이한빈</span>
+      </div>
+    </footer>
+    <script type="text/javascript" src="/js/mainlist.js"></script>
+  </body>
 </html>
