@@ -20,4 +20,6 @@ public interface Biz {
     public int countPostsByUser(int mno);
     public int likesUp(int blikes, int bno);
     public BoardDto boardSelectOne(int bno);
+    public List<BoardDto> getBoards(int offset, int pageSize);
+    public int getBoardCount();
 }

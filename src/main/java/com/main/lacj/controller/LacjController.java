@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -213,5 +216,26 @@ public class LacjController {
 			return "insert";
 		}
 	}
+	
+	@RequestMapping("/mainlist2")
+	public String pagenation(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
+	    int pageSize = 3;
+	    int currentPage = Math.max(1, page);
+	    int offset = (currentPage - 1) * pageSize;
+
+	    List<BoardDto> boardList = biz.getBoards(offset, pageSize);
+	    model.addAttribute("list", boardList);
+
+	    int boardCount = biz.getBoardCount();
+	    int totalPages = (int) Math.ceil((double) boardCount / pageSize);
+
+	    model.addAttribute("currentPage", currentPage);
+	    model.addAttribute("totalPages", totalPages);
+
+	    return "mainlist2";
+	}
+	
+	
+	
 }
 

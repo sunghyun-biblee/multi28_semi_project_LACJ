@@ -206,7 +206,7 @@ footer > div > span {
   justify-content: center;
 }
 
-#pageination {
+#pagenation {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -215,7 +215,7 @@ footer > div > span {
   margin-bottom: 48px;
 }
 
-#pageination > ul {
+#pagenation > ul {
   display: flex;
   height: 100%;
   justify-content: space-around;
@@ -224,7 +224,7 @@ footer > div > span {
   text-decoration: none;
 }
 
-#pageination > ul > li {
+#pagenation > ul > li {
   width: 50px;
   background-color: white;
   text-align: center;

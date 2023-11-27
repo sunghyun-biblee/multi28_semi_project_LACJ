@@ -1,4 +1,4 @@
-const heartbox = document.querySelectorAll("#likebtn");
+const heartbox = document.querySelectorAll(".likebtn2");
 const changeheart = document.getElementById("changbox");
 
 
@@ -17,7 +17,7 @@ function heartchange(event) {
       success: function (msg) {
         console.log("성현");
         console.log(msg.count);
-        $('#likescount').text(msg.count);
+        $('.likescount').text(msg.count);
       },
       error: function () {
         alert("오류가 발생했습니다.");
@@ -33,7 +33,7 @@ function heartchange(event) {
       data: JSON.stringify({"bno": bno}),
       success: function (msg) {
         console.log("성공");
-        $('#likescount').text(msg.count);
+        $('.likescount').text(msg.count);
       },
       error: function () {
         alert("오류가 발생했습니다.");
