@@ -45,11 +45,11 @@ public class LacjController {
 	}
 	
 
-	@RequestMapping("/mainlist")
-	public String mainlist(Model model) {
-		model.addAttribute("list", biz.selectList());
-		return "mainlist";
-	}
+//	@RequestMapping("/mainlist")
+//	public String mainlist(Model model) {
+//		model.addAttribute("list", biz.selectList());
+//		return "mainlist";
+//	}
 
 	@RequestMapping("/registinsert")
 	public String registinsert(MemberDto dto) {
@@ -217,7 +217,7 @@ public class LacjController {
 		}
 	}
 	
-	@RequestMapping("/mainlist2")
+	@RequestMapping("/mainlist")
 	public String pagenation(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
 	    int pageSize = 3;
 	    int currentPage = Math.max(1, page);
@@ -232,7 +232,7 @@ public class LacjController {
 	    model.addAttribute("currentPage", currentPage);
 	    model.addAttribute("totalPages", totalPages);
 
-	    return "mainlist2";
+	    return "mainlist";
 	}
 	
 	
