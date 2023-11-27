@@ -33,4 +33,10 @@ public interface Mapper {
     
     @Select(" SELECT * FROM MULTIBOARD WHERE BNO = #{bno} ")
     BoardDto boardSelectOne(@Param("bno") int bno);
+    
+    @Select(" SELECT * FROM MULTIBOARD ORDER BY BNO DESC LIMIT #{offset}, #{pageSize} ")
+    List<BoardDto> getBoards(int offset, int pageSize);
+    
+    @Select(" SELECT COUNT(*) FROM MULTIBOARD ")
+    int getBoardCount();
 }

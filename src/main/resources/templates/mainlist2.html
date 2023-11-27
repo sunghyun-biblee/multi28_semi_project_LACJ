@@ -83,16 +83,18 @@
 
         <!-- ------------------------------------------------------------------------- -->
         <div id="container_pagenav">
-          <div id="pagenation">
-            <ul>
-              <li><a th:href="@{'?page=' + (currentPage - 1)}" class="mv">◀</a></li>
-              <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
-              	<a th:href="@{'?page=' + pageNumber}" th:text="${pageNumber}"></a>
-              </li>
-              <li><a th:href="@{'?page=' + (currentPage + 1)}" class="mv">▶</a></li>
-            </ul>
-          </div>
-        </div>
+		    <div id="pagenation">
+		        <ul>
+		            <li><a th:if="${currentPage > 1}" th:href="@{'/mainlist2?page=' + ${(currentPage > 1) ? currentPage - 1 : 1}}" class="mv">◀</a></li>
+		
+		            <li th:each="page : ${#numbers.sequence(1, totalPages)}">
+		                <a th:href="@{'/mainlist2?page=' + ${page}}" th:text="${page}"></a>
+		            </li>
+		
+		            <li><a th:if="${currentPage < totalPages}" th:href="@{'/mainlist2?page=' + ${(currentPage < totalPages) ? currentPage + 1 : totalPages}}" class="mv">▶</a></li>
+		        </ul>
+		    </div>
+		</div>
       </div>
     </section>
 

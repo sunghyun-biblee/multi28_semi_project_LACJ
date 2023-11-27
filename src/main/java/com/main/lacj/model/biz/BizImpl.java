@@ -67,6 +67,16 @@ public class BizImpl implements Biz{
 		return mapper.boardSelectOne(bno);
 	}
 
+	@Override
+	public List<BoardDto> getBoards(int offset, int pageSize) {
+		return mapper.getBoards(offset, pageSize);
+	}
+
+	@Override
+	public int getBoardCount() {
+		return mapper.getBoardCount();
+	}
+
 	
 
 }
