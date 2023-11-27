@@ -71,6 +71,7 @@ footer > div > span {
 #teamname > span {
   color: white;
   font-weight: 700;
+  cursor: default;
 }
 #myprofile > img {
   width: 50px;

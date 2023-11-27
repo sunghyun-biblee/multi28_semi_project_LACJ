@@ -1,14 +1,16 @@
 @charset "UTF-8";
+
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
   margin: 0;
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
   box-sizing: border-box;
 }
 ul,
@@ -20,9 +22,13 @@ a {
 }
 
 body {
-  background-image: url("/mainList/id.png");
-  background-repeat: no-repeat;
-  background-position: top 18% right 17%;
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: auto;
+
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
 }
 section {
   width: 100%;
@@ -30,24 +36,27 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
+}
+header {
+  height: 10vh;
 }
 footer {
-  height: 10vh;
-  background-color: #76b1e8;
+  background-color: rgb(117, 177, 232, 0.8s);
 }
 footer > div {
   height: 100%;
-  padding: 32px;
+  height: 100px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 footer > div > span {
   width: 100px;
   height: 30px;
+  font-size: 14px;
+  color: rgb(117, 177, 232, 0.7);
   text-align: center;
-  background-color: white;
+  background-color: rgb(117, 177, 232, 0.8s);
 }
 /* sunghyun */
 
@@ -271,4 +280,64 @@ footer > div > span {
   padding: 10px;
   width: 86px;
   text-align: center;
+}
+
+#overlay {
+}
+.wave {
+  background: rgba(116, 183, 255, 0.25);
+  border-radius: 100% 100% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 10px;
+  left: 0;
+  z-index: -1;
+}
+.wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.8;
+}
+.wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
+}
+
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+@keyframes wave {
+  2% {
+    transform: translateX(1);
+  }
+
+  25% {
+    transform: translateX(-25%);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  75% {
+    transform: translateX(-25%);
+  }
+
+  100% {
+    transform: translateX(1);
+  }
 }
