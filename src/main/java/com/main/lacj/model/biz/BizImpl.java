@@ -11,16 +11,16 @@ import com.main.lacj.model.dto.MemberDto;
 import com.main.lacj.model.mapper.Mapper;
 
 @Service
-public class BizImpl implements Biz{
+public class BizImpl implements Biz {
 
 	@Autowired
 	private Mapper mapper;
-	
+
 	@Autowired
 	public BizImpl(Mapper mapper) {
 		this.mapper = mapper;
 	}
-	
+
 	@Override
 	public List<BoardDto> selectList() {
 		return mapper.selectList();
@@ -33,13 +33,13 @@ public class BizImpl implements Biz{
 
 	@Override
 	public int insertRegi(MemberDto dto) {
-		
+
 		return mapper.insertRegi(dto);
 	}
-	
+
 	@Override
 	public int insertBoard(String btitle, String bcontent, String bimg, int mno) {
-		return mapper.insertBoard(btitle,bcontent,bimg,mno);
+		return mapper.insertBoard(btitle, bcontent, bimg, mno);
 	}
 
 	@Override
@@ -52,10 +52,10 @@ public class BizImpl implements Biz{
 		return 0;
 	}
 
-    @Override
-    public MemberDto selectLogin(MemberDto dto) {
-        return mapper.selectLogin(dto);
-    }
+	@Override
+	public MemberDto selectLogin(MemberDto dto) {
+		return mapper.selectLogin(dto);
+	}
 
 	@Override
 	public int countPostsByUser(int mno) {
@@ -83,30 +83,35 @@ public class BizImpl implements Biz{
 	}
 
 	@Override
-    public void memberDelete(int mno) {
-        mapper.memberDelete(mno);
-    }
-
-    @Override
-    public List<BoardDto> getMyWrite(int mno) {
-        return mapper.getMyWrite(mno);
-        }
-
-	@Override
-	public int countTotalLikes(int mno) {
-		return mapper.countTotalLikes(mno);
+	public void memberDelete(int mno) {
+		mapper.memberDelete(mno);
 	}
 
-    @Override
-    public int likesDown(int blikes, int bno) {
-        return mapper.likesDown(blikes, bno);
-    }
-    @Override
-    public int addcomment(int bno, String comment) {
-        
-        return mapper.addcomment(bno,comment);
-    }
+	@Override
+	public List<BoardDto> getMyWrite(int mno) {
+		return mapper.getMyWrite(mno);
+	}
 
-	
+	@Override
+	public Integer countTotalLikes(int mno) {
+		Integer result = mapper.countTotalLikes(mno);
+		return result != null ? result : 0;
+	}
+
+	@Override
+	public int likesDown(int blikes, int bno) {
+		return mapper.likesDown(blikes, bno);
+	}
+
+	@Override
+	public int addcomment(int bno, String comment) {
+
+		return mapper.addcomment(bno, comment);
+	}
+
+	@Override
+	public List<CommentDto> commentSelectAll(int bno) {
+		return mapper.commentSelectAll(bno);
+	}
 
 }

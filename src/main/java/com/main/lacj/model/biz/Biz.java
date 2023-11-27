@@ -24,7 +24,8 @@ public interface Biz {
     public int getBoardCount();
     public void memberDelete(int mno);
     List<BoardDto> getMyWrite(int mno);
-    int countTotalLikes(int mno);
+    Integer countTotalLikes(int mno);
     public int likesDown(int blikes, int bno);
     public int addcomment(int bno, String comment);
+    List<CommentDto> commentSelectAll(int bno);
 }
