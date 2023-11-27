@@ -16,6 +16,11 @@ public class BizImpl implements Biz{
 	@Autowired
 	private Mapper mapper;
 	
+	@Autowired
+	public BizImpl(Mapper mapper) {
+		this.mapper = mapper;
+	}
+	
 	@Override
 	public List<BoardDto> selectList() {
 		return mapper.selectList();
@@ -75,6 +80,21 @@ public class BizImpl implements Biz{
 	@Override
 	public int getBoardCount() {
 		return mapper.getBoardCount();
+	}
+
+	@Override
+    public void memberDelete(int mno) {
+        mapper.memberDelete(mno);
+    }
+
+    @Override
+    public List<BoardDto> getMyWrite(int mno) {
+        return mapper.getMyWrite(mno);
+        }
+
+	@Override
+	public int countTotalLikes(int mno) {
+		return mapper.countTotalLikes(mno);
 	}
 
 	

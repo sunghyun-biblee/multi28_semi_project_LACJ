@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org%22%3E/">
+<html xmlns:th="http://thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,7 @@
       href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
       type="text/css"
     />
-    <script type="text/javascript"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
     <header>
@@ -36,41 +36,87 @@
         <div id="container1"></div>
         <div id="container2">
           <div>
-            <form action="/" method="post">
-              <span th:text="#">이름</span>
+            <!-- <form action="/" method="post"> -->
+              <br><br><br>
+              <span>회원번호</span>
+              <span th:text="${dto.mno}" id="mno"></span>
+              <span>아이디</span>
+              <span th:text="${dto.mid}">아이디</span>
               <br />
-              <span th:text="#">아이디</span>
+              <span>이름</span>
+              <span th:text="${dto.mname}"></span>
               <br />
-              <span>비밀번호</span
-              ><input type="text" name="mpw" required="required" />
-            </form>
+              <span>비밀번호 수정</span>
+              <input id="pwcheck1" type="text" required/>
+              <br />
+               <span>비밀번호 확인 </span>
+               <input id="pwcheck2" type="text" required/>
+              <br />
+       
+            <!-- </form>  -->
           </div>
           <div id="c3">
-            <button
-              type="submit"
-              onclick="alert('제출이 완료되었습니다')"
-              id="mainbtn"
-            >
+            
+           	<input type="button" onclick="passConfirm()" id="mainbtn" value="제출">
               <!-- 알랏 창으로 제출이 완료되었습니다 하고 리턴은 마이리스트로 -->
-              제출
-            </button>
-            <button
-              type="submit"
-              onclick="location.href='/mainlist'"
-              id="mainbtn"
-            >
-              뒤로가기
-            </button>
+              
+            <input type="button" onclick="location.href='/mainlist'" id="mainbtn" value="뒤로가기">
+            
           </div>
         </div>
       </div>
     </section>
-
     <footer>
       <div>
         <span>조성현</span> <span>주현록</span> <span>안해림</span>
         <span>이한빈</span>
       </div>
     </footer>
+    <script type="text/javascript">
+		    
+    		function passConfirm() {
+				const p1 = document.getElementById('pwcheck1').value; 
+				const p2 = document.getElementById('pwcheck2').value;
+				const mno = $("span[name='mno']").val().trim();
+				var pwchk = new Boolean(false);
+				if(p1 == p2){
+					pwchk = true;
+					
+					
+				} else {
+					alert('비밀번호를 다시 확인해주세요.');
+					pwchk = false;
+				}
+				if(pwchk == true) {
+					let mpw = p1;
+					let updatedata = {"mno": mno, "mpw": mpw };
+					
+					$.ajax({
+						type: "POST",
+						url:'/updatemember',
+						data: JSON.stringify(updatedata),
+						contentType: "application/json",
+						dataType: "json",
+						success: function(msg){
+							if(msg.check == true){
+								var confirmed = confirm('정말로 비밀번호를 변경하시겠습니까?');
+								
+								if(confirmed){
+									//확인
+									alert('비밀번호가 변경되었습니다.');
+									location.href="/mypage";
+								}else{
+									//취소
+									//ajax 실행  url:'/updatemember';
+								}
+							}
+						},
+						error: function(){
+							alert('비밀번호 변경 오류 ㅠㅠㅠ');
+						}
+					});
+				};
+			};
+    </script>
   </body>
 </html>

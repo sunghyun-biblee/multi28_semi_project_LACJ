@@ -22,4 +22,7 @@ public interface Biz {
     public BoardDto boardSelectOne(int bno);
     public List<BoardDto> getBoards(int offset, int pageSize);
     public int getBoardCount();
+    public void memberDelete(int mno);
+    List<BoardDto> getMyWrite(int mno);
+    int countTotalLikes(int mno);
 }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/mypage.css" />
+    <link
+      rel="stylesheet"
+      href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
+      type="text/css"
+    />
+    <script th:inline ="javascript" src="https://code.jquery.com/jquery-3.7.1.js">
+ 
+	function passConfirm() {
+		const p1 = document.getElementById('pwcheck1').value; 
+		const p2 = document.getElementById('pwcheck2').value;
+		var pwchk = new Boolean(false);
+		if(p1 == p2){
+			pwchk = true;
+		} else {
+			alert('비밀번호를 다시 확인해주세요.');
+			pwchk = false;
+		}
+		if(pwchk == true) {
+			let mno = [[${dto.mno}]]
+			let mpw = p1
+			
+			let updatedata = [{ "mno": mno, "mpw": mpw }]
+			 
+			
+			console.log(obj);
+			
+			$.ajax({
+				url :'/updatemember',
+				contentType: 'application/json'
+				type : 'post',
+				data : 'JSON.stringify{updatedata}', 
+				dataType : 'json',
+				success: function(data){
+					console.log("성공");
+				}
+			});
+		} 
+	}
+	
+</script>
+  </head>
+  <body>
+    <header>
+      <div id="container_header">
+        <div id="teamname">
+          <a href="/mainlist" style="color: white; font-weight: 700">LACJ</a>
+        </div>
+        <ul>
+          <li id="myprofile">
+            <img src="/img/id.png" alt="" />
+            <ul id="dropdown">
+              <li><a href="/mypage">마이페이지</a></li>
+              <li><a href="/boardinsertform">글 작성</a></li>
+              <li><a href="/logout">로그아웃</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <section>
+      <div id="container">
+        <div id="container1"></div>
+        <div id="container2">
+          <div>
+            <form action="/" method="post">
+              <span>아이디</span>
+              <span th:text="|${dto.mid}|"></span>
+              <br />
+              <span>이름</span>
+              <span th:text="|${dto.mname}|"></span>
+              <br />
+              <span>비밀번호 수정</span>
+              <input id="pwcheck1" type="text" required/>
+              <br />
+               <span>비밀번호 확인 </span>
+               <input id="pwcheck2" type="text" required/>
+              <br />
+            </form>
+          </div>
+          <div id="c3">
+            <button
+              type="submit"
+              onclick="passConfirm()"
+              id="mainbtn"
+            >
+              <!-- 알랏 창으로 제출이 완료되었습니다 하고 리턴은 마이리스트로 -->
+              제출
+            </button>
+            <button
+              type="submit"
+              onclick="location.href='/mainlist'"
+              id="mainbtn"
+            >
+              뒤로가기
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <span>조성현</span> <span>주현록</span> <span>안해림</span>
+        <span>이한빈</span>
+      </div>
+    </footer>
+  </body>
+</html>

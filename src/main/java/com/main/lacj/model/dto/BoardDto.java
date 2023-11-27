@@ -10,11 +10,12 @@ public class BoardDto {
     private String bimg;
     private int blikes;
     private int mno; // Foreign Key
+    private String bpublic;
 	
     public BoardDto() {
 		super();
 	}
-	public BoardDto(int bno, String btitle, String bcontent, Date bdate, String bimg, int blikes, int mno) {
+	public BoardDto(int bno, String btitle, String bcontent, Date bdate, String bimg, int blikes, int mno,String bpublic) {
 		super();
 		this.bno = bno;
 		this.btitle = btitle;
@@ -23,6 +24,7 @@ public class BoardDto {
 		this.bimg = bimg;
 		this.blikes = blikes;
 		this.mno = mno;
+		this.bpublic = bpublic;
 	}
 	public int getBno() {
 		return bno;
@@ -65,6 +67,12 @@ public class BoardDto {
 	}
 	public void setMno(int mno) {
 		this.mno = mno;
+	}
+	public String getBpublic() {
+		return bpublic;
+	}
+	public void setBpublic(String bpublic) {
+		this.bpublic = bpublic;
 	}
     
 }

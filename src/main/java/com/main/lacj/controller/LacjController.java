@@ -45,11 +45,11 @@ public class LacjController {
 	}
 	
 
-	@RequestMapping("/mainlist")
-	public String mainlist(Model model) {
-		model.addAttribute("list", biz.selectList());
-		return "mainlist";
-	}
+//	@RequestMapping("/mainlist")
+//	public String mainlist(Model model) {
+//		model.addAttribute("list", biz.selectList());
+//		return "mainlist";
+//	}
 
 	@RequestMapping("/registinsert")
 	public String registinsert(MemberDto dto) {
@@ -68,10 +68,30 @@ public class LacjController {
 		return "regist";
 	}
 
-	@RequestMapping("/mypage")
+	@GetMapping("/memberdelete")
+    public String withdrawMember(HttpSession session) {
+        MemberDto member = (MemberDto) session.getAttribute("user");
+
+        biz.memberDelete(member.getMno());
+
+        session.invalidate();
+
+        return "redirect:/";
+    }
+
+    @RequestMapping("/mypage")
     public String mypage(HttpSession session, Model model) {
         MemberDto dto = (MemberDto)session.getAttribute("user");
-        model.addAttribute("dto",dto); 
+        model.addAttribute("dto",dto);
+
+        int mno = dto.getMno();
+        List<BoardDto> mywrite = biz.getMyWrite(mno);
+        int totalPosts = biz.countPostsByUser(mno);
+        int totalLikes = biz.countTotalLikes(mno);
+
+        model.addAttribute("totalLikes", totalLikes);
+        model.addAttribute("mywrite", mywrite);
+        model.addAttribute("totalPosts", totalPosts);
 
         if(dto.getMstatus() != "G") {
             return "mypage";
@@ -121,6 +141,29 @@ public class LacjController {
 		return map;
 	}
 	
+	@RequestMapping(value = "/updatemember", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Boolean> updatemember(@RequestBody MemberDto dto, HttpSession session) {
+
+        MemberDto login = biz.selectLogin(dto);
+        boolean check = false;
+
+        if (login != null) {
+        	//비밀번호 업데이트 biz
+            session.setAttribute("user", login);
+            session.setMaxInactiveInterval(60 * 10);
+            check = true;
+        }
+
+        Map<String, Boolean> map = new HashMap<>();
+        map.put("check", check);
+        return map;
+    }
+	
+//	@RequestMapping("/rollbackPassword")
+//	public int rollbackPassword()
+	
+	
 	@RequestMapping(value="/uplikes")
 	@ResponseBody
 	public Map<String, Integer> uplikes(@RequestBody BoardDto dto, HttpSession session) {
@@ -139,8 +182,6 @@ public class LacjController {
 		return map;
 		
 	}
-	
-	
 	
 //	@RequestMapping("/loginfail")
 //	public String loginfail() {
@@ -217,7 +258,7 @@ public class LacjController {
 		}
 	}
 	
-	@RequestMapping("/mainlist2")
+	@RequestMapping("/mainlist")
 	public String pagenation(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
 	    int pageSize = 3;
 	    int currentPage = Math.max(1, page);
@@ -232,10 +273,21 @@ public class LacjController {
 	    model.addAttribute("currentPage", currentPage);
 	    model.addAttribute("totalPages", totalPages);
 
-	    return "mainlist2";
+	    return "mainlist";
 	}
 	
 	
 	
+	@RequestMapping("/mypagedetail")
+	public String mypagedetail(Model model, HttpSession session) {
+		MemberDto dto = (MemberDto)session.getAttribute("user");
+		
+		model.addAttribute("dto", dto);
+		return "mypagedetail";
+	}
+	
+	
+
 }
+	
 

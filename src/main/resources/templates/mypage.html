@@ -1,71 +1,97 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org%22%3E/">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
-<link rel="stylesheet" href="/css/mypage.css" />
-<link rel="stylesheet"
-	href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
-	type="text/css" />
-</head>
-<body>
-	<header>
-		<div id="container_header">
-			<div id="teamname">
-				<a href="/mainlist" style="color: white; font-weight: 700">LACJ</a>
-			</div>
-			<ul>
-				<li id="myprofile"><img src="/img/id.png" alt="" />
-					<ul id="dropdown">
-						<li><a href="/mypage">마이페이지</a></li>
-						<li><a href="/boardinsertform">글 작성</a></li>
-						<li><a href="/logout">로그아웃</a></li>
-					</ul></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/mypage.css" />
+    <link
+      rel="stylesheet"
+      href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
+      type="text/css"
+    />
+        <script>
+        function memberDeleteQ() {
+            var deleteResult = confirm("정말 탈퇴하시겠습니까?");
+
+            if (deleteResult) {
+                window.location.href = "/memberdelete";
+            } else {
+            }
+        }
+    </script>
+  </head>
+  <body>
+    <header>
+      <div id="container_header">
+        <div id="teamname">
+          <a href="/mainlist" style="color: white; font-weight: 700">LACJ</a>
+        </div>
+        <ul>
+          <li id="myprofile">
+            <img src="/img/id.png" alt="" />
+            <ul id="dropdown">
+              <li><a href="/mypage">마이페이지</a></li>
+              <li><a href="/boardinsertform">글 작성</a></li>
+              <li><a href="/logout">로그아웃</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <section>
+      <div id="container">
+        <div id="container1"></div>
+        <div id="container2">
+          <div>
+            <div id="mypagename">
+              <span style="color: skyblue" th:text="|${dto.mname}님|"
+                >조주안이</span
+              >
+            </div>
+            <div id="c2">
+              <div class="mypageWL">
+                <span th:text="${totalPosts}">작성글 개수</span
+                ><span>wirte</span>
+              </div>
+              <div class="mypageWL"><span th:text=${totalLikes}>좋아요 개수</span><span>likes</span></div>
+            </div>
+          </div>
+          <div id="mycontent_text">
+          	<ul>
+			    <li th:each="board : ${mywrite}">
+			        <!-- 글 제목 표시 -->
+			        <span th:text="${board.btitle}"></span>
+			    </li>
 			</ul>
-		</div>
-	</header>
+          </div>
+          <div id="c3">
+            <button
+              type="submit"
+              onclick="location.href='/mypagedetail'"
+              id="mainbtn"
+            >
+              정보수정
+            </button>
+            <button
+              type="submit"
+              onclick="memberDeleteQ()"
+              id="mainbtn"
+            >
+              탈퇴
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-	<section>
-		<div id="container">
-			<div id="container1"></div>
-			<div id="container2">
-				<div>
-					<div id="mypagename">
-						<span style="color: skyblue" th:text="|${dto.mname}님|">조주안이</span>
-					</div>
-					<div id="c2">
-						<div class="mypageWL">
-							<span th:text="${totalPosts}">작성글 개수</span><span>wirte</span>
-						</div>
-						<div class="mypageWL">
-							<span>211</span><span>likes</span>
-						</div>
-					</div>
-				</div>
-				<div id="mycontent_text">123</div>
-				<div id="c3">
-					<button type="submit" onclick="location.href='/mypagedetail'"
-						id="mainbtn">정보수정</button>
-					<button type="submit"
-						onclick="location.href='http://www.naver.com/'" id="mainbtn">
-						탈퇴</button>
-				</div>
-			</div>
-		</div>
-		<div id="overlay">
-			<div class="wave"></div>
-			<div class="wave"></div>
-			<div class="wave"></div>
-			<div class="wave"></div>
-			
-		</div>
-	</section>
-
-	<footer>
-		<div>
-			<span>조성현</span> <span>주현록</span> <span>안해림</span> <span>이한빈</span>
-		</div>
-	</footer>
-</body>
+    <footer>
+      <div>
+        <span>조성현</span> <span>주현록</span> <span>안해림</span>
+        <span>이한빈</span>
+      </div>
+    </footer>
+  </body>
 </html>

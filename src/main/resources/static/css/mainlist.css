@@ -341,7 +341,7 @@ footer > div > span {
 }
 
 .delete {
-  background-image: url("/img/warning.png");
+  background-image: url("/img/send.png");
   background-size: cover;
 }
 button {
