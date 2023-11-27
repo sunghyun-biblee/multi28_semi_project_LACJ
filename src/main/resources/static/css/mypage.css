@@ -197,7 +197,8 @@ footer > div > span {
 }
 #container {
   background-color: white;
-  width: 360px;
+  width: 400px;
+
   border-radius: 10px;
   border: 1px solid #b5bdc5;
   /* box-shadow: 0px 0px 100px 5px #DEEBF7; */
@@ -225,7 +226,7 @@ footer > div > span {
   justify-content: space-between;
   /* justify-content: space-between; */
   /* margin-bottom: 0px; */
-  height: 240px;
+  height: 400px;
   background: linear-gradient(to bottom, white 10%, #f1f7fc);
 }
 #container2 > div:first-child {
@@ -267,6 +268,9 @@ footer > div > span {
   border-top: 1px solid #b5bdc5;
   padding: 10px 0 10px 0;
 }
+#c3 > button {
+  cursor: pointer;
+}
 #mainbtn:first-child {
   color: black;
 }
@@ -282,8 +286,6 @@ footer > div > span {
   text-align: center;
 }
 
-#overlay {
-}
 .wave {
   background: rgba(116, 183, 255, 0.25);
   border-radius: 100% 100% 0 0;
@@ -307,7 +309,6 @@ footer > div > span {
   animation: wave 20s -1s reverse infinite;
   opacity: 0.9;
 }
-
 
 @keyframes gradient {
   0% {
