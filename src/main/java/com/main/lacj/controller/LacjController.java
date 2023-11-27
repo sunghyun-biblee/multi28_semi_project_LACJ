@@ -86,7 +86,7 @@ public class LacjController {
         List<BoardDto> mywrite = biz.getMyWrite(mno);
         int totalPosts = biz.countPostsByUser(mno);
         int totalLikes = biz.countTotalLikes(mno);
-
+        
         model.addAttribute("totalLikes", totalLikes);
         model.addAttribute("mywrite", mywrite);
         model.addAttribute("totalPosts", totalPosts);
@@ -258,7 +258,7 @@ public class LacjController {
 			try {
 				inputStream = file.getInputStream();
 				
-				String path = "C:\\workspace\\6.FrameWork\\SemiProject_LACJ\\src\\main\\resources\\static\\img";
+				String path = "C:\\workspace\\6_FrameWork\\SemiProject_LACJ\\src\\main\\resources\\static\\img";
 				File storage = new File(path);
 				if(!storage.exists()) {	//존재여부 확인
 					storage.mkdirs();	//없으면 디렉토리 만들기(폴더생성)
@@ -305,8 +305,6 @@ public class LacjController {
 	    return "mainlist";
 	}
 	
-	
-	
 	@RequestMapping("/mypagedetail")
 	public String mypagedetail(Model model, HttpSession session) {
 		MemberDto dto = (MemberDto)session.getAttribute("user");
@@ -315,7 +313,18 @@ public class LacjController {
 		return "mypagedetail";
 	}
 	
-	
+	@RequestMapping("/boarddetail")
+    public String boarddetail(@RequestParam(name="bno")int bno, HttpSession session, Model model) {
+
+        BoardDto dto = biz.boardSelectOne(bno);
+        List<CommentDto> list = biz.commentSelectAll(bno);
+
+        //session.setAttribute("user", session.getAttribute("user"));
+        model.addAttribute("list", list);
+        model.addAttribute("dto", dto);
+
+        return "boarddetail";
+    }
 
 }
 	
