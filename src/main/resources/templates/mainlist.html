@@ -78,8 +78,7 @@
 							class="mv">◀</a></li>
 
 						<li th:each="page : ${#numbers.sequence(1, totalPages)}"><a
-							th:href="@{'/mainlist?page=' + ${page}}" th:text="${page}"></a>
-						</li>
+							th:href="@{'/mainlist?page=' + ${page}}" th:text="${page}"></a></li>
 
 						<li><a th:if="${currentPage < totalPages}"
 							th:href="@{'/mainlist?page=' + ${(currentPage < totalPages) ? currentPage + 1 : totalPages}}"

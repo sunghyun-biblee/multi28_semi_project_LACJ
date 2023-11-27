@@ -1,73 +1,103 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org/">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
-<link rel="stylesheet" href="/css/boarddetail.css" />
-<link rel="stylesheet"
-	href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
-	type="text/css" />
-</head>
-<body>
-	<header>
-		<div id="container_header">
-			<div id="teamname">
-				<span>LACJ</span>
-			</div>
-			<ul>
-				<li id="myprofile"><img src="/img/id.png" alt="" />
-					<ul id="dropdown">
-						<li><a href="mypage">마이페이지</a></li>
-						<li><a href="boardinsertform">글 작성</a></li>
-						<li><a href="logout">로그아웃</a></li>
-					</ul></li>
-			</ul>
-		</div>
-		<section>
-			<div id="container_space">
-				<div>
-					<a href=""><img th:src="@{/img/}+${dto.bimg}" id="content_img" /></a>
-					<div id="content">
-						<span th:text="${dto.btitle}">
-						</span>
-						<p th:text=${dto.bcontent}></p>
-					</div>
-					<div id="likedelete">
-						<div id="likes">
-							<span>좋아요</span>
-							<button id="likebtn" class="buttonbox likebtn2">
-								<span th:text="${dto.blikes}" class="likescount"></span>
-								<div class="off changbox"></div>
-							</button>
-						</div>
-						<div id="comments">		<!-- 원래 id delete였음 -->
-							<span>댓글</span>
-							<button id="delbtn" class="buttonbox">
-								<div class="comments"></div>
-							</button>
-						</div>
-					</div>
-					<div th:if="${dto.mno} eq ${session.user.mno}" id="updatedelete">
-						<input type="button" class="update" value="수정">
-						<input type="button" class="delete" value="삭제">
-					</div>
-				</div>
-				<div id="cmtContainer">
-					<div>
-						<span>Comment</span>
-						<div>
-							<ul>
-								<li th:each="comments:${list}" th:text="${comments.comment}"> 추가될 줄
-							</ul>
-						</div>
-						<div>
-							<textarea rows="1" cols="10" placeholder="댓글싸질러주세요"></textarea>
-							<input type="button" id="commentsubmit" value="응애 해줘"></div>
-						</div>
-					</div>
-				</div>
-		</section>
-	</header>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/boarddetail.css" />
+    <link
+      rel="stylesheet"
+      href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
+      type="text/css"
+    />
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div id="container_header">
+        <div id="teamname">
+          <span>LACJ</span>
+        </div>
+        <ul>
+          <li id="myprofile">
+            <img src="/img/id.png" alt="" />
+            <ul id="dropdown">
+              <li><a href="mypage">마이페이지</a></li>
+              <li><a href="boardinsertform">글 작성</a></li>
+              <li><a href="logout">로그아웃</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <section>
+      <div id="container_space">
+        <div class="detailleftbox">
+          <a href=""><img th:src="@{/img/}+${dto.bimg}" id="content_img" /></a>
+          <div id="content">
+            <span th:text="${dto.btitle}"> </span>
+            <p th:text="${dto.bcontent}"></p>
+          </div>
+          <div id="likedelete">
+            <div id="likes">
+              <span>좋아요</span>
+              <button id="likebtn" class="buttonbox likebtn2">
+                <span th:text="${dto.blikes}" class="likescount"></span>
+                <div class="off changbox"></div>
+              </button>
+            </div>
+            <div id="comments">
+              <!-- 원래 id delete였음 -->
+              <span>댓글</span>
+              <button id="delbtn" class="buttonbox">
+                <div class="comments"></div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="cmtContainer">
+          <div class="commentlist">
+            <span>Comment</span>
+            <div class="commentR">
+              <div>
+                <ul>
+                  <li
+                    th:each="comments:${list}"
+                    th:text="${comments.comment}"
+                  ></li>
+                </ul>
+              </div>
+              <div>
+                <textarea
+                  rows="1"
+                  cols="10"
+                  placeholder="댓글싸질러주세요"
+                ></textarea>
+                <button type="submit" id="commentsubmit">응해 해줘</button>
+              </div>
+            </div>
+          </div>
+          <div th:if="${dto.mno} eq ${session.user.mno}" id="updatedelete">
+            <div class="submitbox">
+              <button type="submit" id="update">수정</button>
+            </div>
+            <div class="submitbox">
+              <button type="submit" id="delete">삭제</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      $(document).ready(function () {
+        $("#comments").click(function () {
+          $("#cmtContainer").animate({ right: "6%" }, 1000);
+        });
+      });
+    </script>
+    <script type="text/javascript" src="/js/mainlist.js"></script>
+  </body>
 </html>
