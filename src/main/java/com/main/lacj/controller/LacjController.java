@@ -8,12 +8,9 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.main.lacj.model.biz.Biz;
 import com.main.lacj.model.dto.BoardDto;
+import com.main.lacj.model.dto.CommentDto;
 import com.main.lacj.model.dto.MemberDto;
 import com.main.lacj.model.file.UploadFile;
 
@@ -182,6 +180,37 @@ public class LacjController {
 		return map;
 		
 	}
+    @RequestMapping(value = "/downlikes")
+    @ResponseBody
+    public Map<String, Integer> downlikes(@RequestBody BoardDto dto) {
+        int bno = dto.getBno();
+        BoardDto dto1 = biz.boardSelectOne(bno);
+
+        int count = 0;
+        count = dto1.getBlikes();
+        int blikes = 0;
+
+        blikes = count - 1;
+        biz.likesDown(blikes, bno);
+
+        Map<String, Integer> map = new HashMap<>();
+        map.put("count", blikes);
+        return map;
+
+    }
+
+    @RequestMapping(value = "/addcomment")
+    @ResponseBody
+    public Map<String, Integer> addcomment(@RequestBody CommentDto commentdto) {
+        int bno=commentdto.getBno();
+        String comment=commentdto.getComment();
+        
+        int res =biz.addcomment(bno,comment);
+        System.out.println(res);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("res", res);
+        return map;
+    }
 	
 //	@RequestMapping("/loginfail")
 //	public String loginfail() {

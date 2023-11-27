@@ -97,6 +97,16 @@ public class BizImpl implements Biz{
 		return mapper.countTotalLikes(mno);
 	}
 
+    @Override
+    public int likesDown(int blikes, int bno) {
+        return mapper.likesDown(blikes, bno);
+    }
+    @Override
+    public int addcomment(int bno, String comment) {
+        
+        return mapper.addcomment(bno,comment);
+    }
+
 	
 
 }

@@ -25,4 +25,6 @@ public interface Biz {
     public void memberDelete(int mno);
     List<BoardDto> getMyWrite(int mno);
     int countTotalLikes(int mno);
+    public int likesDown(int blikes, int bno);
+    public int addcomment(int bno, String comment);
 }
