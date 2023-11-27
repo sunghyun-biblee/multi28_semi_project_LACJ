@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org%22%3E/">
   <head>
@@ -55,7 +56,7 @@
                 <span th:text="${totalPosts}">작성글 개수</span
                 ><span>wirte</span>
               </div>
-              <div class="mypageWL"><span>211</span><span>likes</span></div>
+              <div class="mypageWL"><span th:text=${totalLikes}>좋아요 개수</span><span>likes</span></div>
             </div>
           </div>
           <div id="mycontent_text">
@@ -83,13 +84,6 @@
             </button>
           </div>
         </div>
-      </div>
-       <div id="overlay">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
       </div>
     </section>
 

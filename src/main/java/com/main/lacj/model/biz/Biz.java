@@ -19,11 +19,10 @@ public interface Biz {
     public MemberDto selectLogin(MemberDto dto);
     public int countPostsByUser(int mno);
     public int likesUp(int blikes, int bno);
-    public int likesDown(int blikes, int bno);
     public BoardDto boardSelectOne(int bno);
     public List<BoardDto> getBoards(int offset, int pageSize);
     public int getBoardCount();
     public void memberDelete(int mno);
     List<BoardDto> getMyWrite(int mno);
-    public int addcomment(int bno, String comment);
+    int countTotalLikes(int mno);
 }
