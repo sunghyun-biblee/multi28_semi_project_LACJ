@@ -78,9 +78,9 @@ function addcomment(event) {
     dataType: "json",
     success: function (map) {
       if (map.res > 0) {
-        alert("성공현");
+        alert("댓글작성에 성공하셨습니다.");
       } else {
-        alert("success:실패록");
+        alert("success:조성현그잡채");
       }
     },
     error: function () {
