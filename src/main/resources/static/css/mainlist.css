@@ -51,23 +51,25 @@ a {
 }
 
 footer {
-  height: 20vh;
   background-color: #76b1e8;
 }
 
+
 footer > div {
   height: 100%;
-  padding: 32px;
+  height: 100px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 footer > div > span {
   width: 100px;
   height: 30px;
+  font-size: 14px;
+  color: white;
   text-align: center;
-  background-color: white;
+  background-color: rgb(117, 177, 232, 0.8s);
 }
 #teamname > span {
   color: white;
@@ -110,6 +112,7 @@ footer > div > span {
   border-radius: 15px;
   background-color: aliceblue;
   margin-top: 30px;
+  box-shadow: 5px 5px 10px 10px #D5D7DA;
 }
 
 #content_img {
@@ -153,6 +156,8 @@ footer > div > span {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #b5bdc5;
+  
+ 
 }
 
 #likedelete > div {

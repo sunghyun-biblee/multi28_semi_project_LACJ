@@ -26,22 +26,23 @@
 			<div id="container">
 				<div id="containerL">
 					<!-- 사진 출력 > 자바 스크립트 사용해서 업로드 이벤트가 인식되면 아이디가 preview인 img 태그안에 소스를 저장함-->
-					<img id="preview" style="display: none;">
-					<img id="origin"  th:src="@{/img/}+${dto.bimg}" style="display: block;">
+					<img id="preview" style="display: none" /> <img id="origin"
+						th:src="@{/img/}+${dto.bimg}" style="display: block" />
 				</div>
 				<div id="containerR">
-					<input type="hidden" name="bno" th:value="${dto.bno}" />
-					<input type="text" name="btitle" placeholder="제목을 작성해주세요" 
-					th:placeholder="${dto.btitle}"/>
+					<input type="hidden" name="bno" th:value="${dto.bno}" /> <input
+						type="text" name="btitle" placeholder="제목을 작성해주세요"
+						autocomplete="off" th:placeholder="${dto.btitle}" required />
 					<textarea name="bcontent" id="insertboard" cols="20" rows="10"
-						placeholder="내용을 작성 해주세요" th:placeholder="${dto.bcontent}"></textarea>
+						placeholder="내용을 작성 해주세요" th:placeholder="${dto.bcontent}"
+						autocomplete="off" required></textarea>
 				</div>
 				<div id="containerB">
 					<label for="filebtn">이미지 등록</label> <input type="file" value="파일선택"
 						id="filebtn" onchange="readURL(this);" name="file" />
 					<div>
-						<input type="checkbox" value="G" class="Guest" name="bpublic">
-						<span >게스트열람</span>
+						<input type="checkbox" value="G" class="Guest" name="bpublic" />
+						<span>게스트열람</span>
 						<button type="submit">작성</button>
 						<button type="button" onclick="history.back()">취소</button>
 					</div>

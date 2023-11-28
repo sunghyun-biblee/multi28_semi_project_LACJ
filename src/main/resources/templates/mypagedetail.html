@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/css/mypage.css" />
+    <link rel="stylesheet" href="/css/mypagedetail.css" />
     <link
       rel="stylesheet"
       href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
       type="text/css"
     />
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+    ></script>
   </head>
   <body>
     <header>
@@ -35,33 +38,48 @@
       <div id="container">
         <div id="container1"></div>
         <div id="container2">
-          <div>
+          
             <!-- <form action="/" method="post"> -->
-              <br><br><br>
-              <span>회원번호</span>
-              <span th:text="${dto.mno}" id="mno"></span>
-              <span>아이디</span>
-              <span th:text="${dto.mid}">아이디</span>
-              <br />
-              <span>이름</span>
-              <span th:text="${dto.mname}"></span>
-              <br />
-              <span>비밀번호 수정</span>
-              <input id="pwcheck1" type="text" required/>
-              <br />
-               <span>비밀번호 확인 </span>
-               <input id="pwcheck2" type="text" required/>
-              <br />
-       
+            <div class="myinfo">
+              <div class="myinfo_column">
+                <p>회원번호</p>
+                <span th:text="${dto.mno}" id="mno"></span>
+              </div>
+              <div class="myinfo_column">
+                <p>아이디</p>
+                <span th:text="${dto.mid}">아이디</span>
+              </div>
+              <div class="myinfo_column">
+                <p>이름</p>
+                <span th:text="${dto.mname}"></span>
+              </div>
+              <div class="myinfo_column">
+                <p>비밀번호 수정</p>
+                <input id="pwcheck1" type="text" required />
+              </div>
+              <div class="myinfo_column">
+                <p>비밀번호 확인</p>
+                <input id="pwcheck2" type="text" required />
+              </div>
+            </div>
+
             <!-- </form>  -->
-          </div>
+          
           <div id="c3">
-            
-           	<input type="button" onclick="passConfirm()" id="mainbtn" value="제출">
-              <!-- 알랏 창으로 제출이 완료되었습니다 하고 리턴은 마이리스트로 -->
-              
-            <input type="button" onclick="location.href='/mainlist'" id="mainbtn" value="뒤로가기">
-            
+            <input
+              type="button"
+              onclick="passConfirm()"
+              id="mainbtn"
+              value="제출"
+            />
+            <!-- 알랏 창으로 제출이 완료되었습니다 하고 리턴은 마이리스트로 -->
+
+            <input
+              type="button"
+              onclick="location.href='/mainlist'"
+              id="mainbtn"
+              value="뒤로가기"
+            />
           </div>
         </div>
       </div>
@@ -73,40 +91,39 @@
       </div>
     </footer>
     <script type="text/javascript">
-		    
-    		function passConfirm() {
-				const p1 = document.getElementById('pwcheck1').value; 
-				const p2 = document.getElementById('pwcheck2').value;
-				const oripw = [[${dto.mpw}]]
-				const mno = [[${dto.mno}]]
-				const mid = [[${dto.mno}]]
-				
-				var pwchk = new Boolean(false);
-				if(p1 == p2){
-					pwchk = true;
-				} else {
-					alert('비밀번호를 다시 확인해주세요.');
-					pwchk = false;
-				}
-				if(pwchk == true) {
-					let mpw = p1;
-					let updatedata = {"mno": mno, "mpw": mpw };
-					$.ajax({
-						type: "POST",
-						url:'/updatemember',
-						data: JSON.stringify(updatedata),
-						contentType: "application/json",
-						dataType: "json",
-						success: function(){
-							alert('비밀번호 변경 성공!');
-							location.href='/mypage';
-						},
-						error: function(){
-							alert('비밀번호 변경 오류 ㅠㅠㅠ');
-						}
-					});
-				};
-			};
+      function passConfirm() {
+        const p1 = document.getElementById("pwcheck1").value;
+        const p2 = document.getElementById("pwcheck2").value;
+        const oripw = /*[[${dto.mpw}]]*/ "";
+        const mno = /*[[${dto.mno}]]*/ "";
+        const mid = /*[[${dto.mno}]]*/ "";
+
+        var pwchk = new Boolean(false);
+        if (p1 == p2) {
+          pwchk = true;
+        } else {
+          alert("비밀번호를 다시 확인해주세요.");
+          pwchk = false;
+        }
+        if (pwchk == true) {
+          let mpw = p1;
+          let updatedata = { mno: mno, mpw: mpw };
+          $.ajax({
+            type: "POST",
+            url: "/updatemember",
+            data: JSON.stringify(updatedata),
+            contentType: "application/json",
+            dataType: "json",
+            success: function () {
+              alert("비밀번호 변경 성공!");
+              location.href = "/mypage";
+            },
+            error: function () {
+              alert("비밀번호 변경 오류 ㅠㅠㅠ");
+            },
+          });
+        }
+      }
     </script>
   </body>
 </html>

@@ -44,7 +44,7 @@
           <div id="likedelete">
             <div id="likes">
               <span>좋아요</span>
-              <button id="likebtn" class="buttonbox likebtn2" th:text="${dto.blikes}">
+              <button id="likebtn" class="buttonbox likebtn2" th:attr="data-id=${dto.bno}">
                 <span th:text="${dto.blikes}" class="likescount" ></span>
                 <div class="off changbox"></div>
               </button>
