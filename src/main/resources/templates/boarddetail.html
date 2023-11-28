@@ -44,8 +44,8 @@
           <div id="likedelete">
             <div id="likes">
               <span>좋아요</span>
-              <button id="likebtn" class="buttonbox likebtn2">
-                <span th:text="${dto.blikes}" class="likescount"></span>
+              <button id="likebtn" class="buttonbox likebtn2" th:text="${dto.blikes}">
+                <span th:text="${dto.blikes}" class="likescount" ></span>
                 <div class="off changbox"></div>
               </button>
             </div>
@@ -74,6 +74,7 @@
                 <textarea
                   rows="1"
                   cols="10"
+                  name="comment"
                   placeholder="댓글싸질러주세요"
                 ></textarea>
                 <button type="submit" id="commentsubmit">응해 해줘</button>
