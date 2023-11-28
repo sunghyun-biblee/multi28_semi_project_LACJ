@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org/">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Document</title>
-<link rel="stylesheet" href="/css/boardinsert.css" />
+<link rel="stylesheet" href="/css/boardupdate.css" />
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<header>
@@ -19,17 +21,20 @@
 	</header>
 
 	<section>
-		<form action="/boardinsert" method="post"
+		<form action="/boardUpdate" method="post"
 			enctype="multipart/form-data">
 			<div id="container">
 				<div id="containerL">
 					<!-- 사진 출력 > 자바 스크립트 사용해서 업로드 이벤트가 인식되면 아이디가 preview인 img 태그안에 소스를 저장함-->
-					<img id="preview">
+					<img id="preview" style="display: none;">
+					<img id="origin"  th:src="@{/img/}+${dto.bimg}" style="display: block;">
 				</div>
 				<div id="containerR">
-					<input type="text" name="btitle" placeholder="제목을 작성해주세요" />
+					<input type="hidden" name="bno" th:value="${dto.bno}" />
+					<input type="text" name="btitle" placeholder="제목을 작성해주세요" 
+					th:placeholder="${dto.btitle}"/>
 					<textarea name="bcontent" id="insertboard" cols="20" rows="10"
-						placeholder="내용을 작성 해주세요"></textarea>
+						placeholder="내용을 작성 해주세요" th:placeholder="${dto.bcontent}"></textarea>
 				</div>
 				<div id="containerB">
 					<label for="filebtn">이미지 등록</label> <input type="file" value="파일선택"
@@ -49,6 +54,6 @@
 			<span>조성현</span> <span>주현록</span> <span>안해림</span> <span>이한빈</span>
 		</div>
 	</footer>
-	<script type="text/javascript" src="/js/boardinsert.js"></script>
+	<script type="text/javascript" src="/js/boardupdate.js"></script>
 </body>
 </html>

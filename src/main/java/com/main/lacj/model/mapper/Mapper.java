@@ -21,8 +21,8 @@ public interface Mapper {
 	@Insert(" INSERT INTO MULTIMEMBER VALUES(NULL, #{mid}, #{mpw}, #{mname}, #{mimg}, #{mstatus} )")
 	public int insertRegi(MemberDto dto);
 
-	@Insert(" INSERT INTO MULTIBOARD VALUES(NULL, #{btitle}, #{bcontent}, NOW(), #{bimg}, 0, #{mno})")
-	public int insertBoard(String btitle, String bcontent, String bimg, int mno);
+	@Insert(" INSERT INTO MULTIBOARD VALUE(NULL, #{btitle}, #{bcontent}, NOW(), #{bimg}, 0, #{mno}, #{bpublic} )")
+	public int insertBoard(String btitle, String bcontent, String bimg, int mno, String bpublic);
 
 	@Select(" SELECT * FROM MULTIMEMBER WHERE MID = #{mid} AND MPW = #{mpw}  ")
 	MemberDto selectLogin(MemberDto dto);
@@ -38,7 +38,10 @@ public interface Mapper {
 
 	@Select(" SELECT * FROM MULTIBOARD ORDER BY BNO DESC LIMIT #{offset}, #{pageSize} ")
 	List<BoardDto> getBoards(int offset, int pageSize);
-
+	
+	@Select(" SELECT * FROM MULTIBOARD WHERE BPUBLIC IS NULL ORDER BY BNO DESC LIMIT #{offset}, #{pageSize} ")
+	List<BoardDto> getGuestBoards(int offset, int pageSize);
+	
 	@Select(" SELECT COUNT(*) FROM MULTIBOARD ")
 	int getBoardCount();
 
@@ -49,7 +52,7 @@ public interface Mapper {
 	List<BoardDto> getMyWrite(@Param("mno") int mno);
 
 	@Select(" SELECT SUM(BLIKES) FROM MULTIBOARD WHERE MNO = #{mno} ")
-	Integer countTotalLikes(int mno); 
+	Integer countTotalLikes(int mno);
 
 	@Update(" UPDATE MULTIMEMBER SET MPW = #{mpw} WHERE MNO= #{mno} ")
 	public int updatemember(MemberDto dto);
@@ -60,6 +63,14 @@ public interface Mapper {
 	@Insert(" INSERT INTO MULTICOMMENT VALUES( NULL, #{comment} ,#{bno} ) ")
 	int addcomment(int bno, String comment);
 
-	@Select(" SELECT * FROM MULTICOMMENT WHERE BNO=#{bno}")
+	@Select(" SELECT * FROM MULTICOMMENT WHERE BNO = #{bno} ")
 	List<CommentDto> commentSelectAll(int bno);
+	
+	@Delete(" DELETE FROM MULTIBOARD WHERE BNO = #{bno} ")
+	int boardDelete(int bno);
+	
+	@Update(" UPDATE MULTIBOARD SET BTITLE = #{btitle}, BCONTENT = #{bcontent}, BIMG = #{bimg}, BPUBLIC = #{bpublic} WHERE BNO = #{bno} ")
+	int boardUpdate(BoardDto dto);
+	
+	
 }
