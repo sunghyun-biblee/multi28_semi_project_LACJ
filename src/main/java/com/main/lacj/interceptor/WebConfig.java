@@ -13,7 +13,21 @@ public class WebConfig implements WebMvcConfigurer {
 		// interceptor 추가
 		registry.addInterceptor(new LACJinterceptor())
 		.excludePathPatterns("/css/**", "/fonts/**", "/js/**", "/img/**","/fonts/**")
-		.addPathPatterns("/boardinsertform");
-				
+		.addPathPatterns("/boardinsertform")
+		.addPathPatterns("/boardUpdate")
+		.addPathPatterns("/boardDelete")
+		.addPathPatterns("/boardUpdateForm")
+		.addPathPatterns("/memberdelete")
+		.addPathPatterns("/mypage")
+		.addPathPatterns("/mypagefail")
+		.addPathPatterns("/updatemember")
+		.addPathPatterns("/mypagedetail")
+		.addPathPatterns("/uplikes")
+		.addPathPatterns("/downlikes")
+		.addPathPatterns("/addcomment")
+		.addPathPatterns("/logout")
+		.addPathPatterns("/boardinsert")
+		.addPathPatterns("/mainlist")
+		.addPathPatterns("/boarddetail");
 	}
 }

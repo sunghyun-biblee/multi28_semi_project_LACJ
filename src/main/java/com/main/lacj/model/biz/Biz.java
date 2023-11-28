@@ -29,4 +29,7 @@ public interface Biz {
     public int likesDown(int blikes, int bno);
     public int addcomment(int bno, String comment);
     List<CommentDto> commentSelectAll(int bno);
+    public int updatemember(MemberDto dto);
+    int boardDelete(int bno);
+    int boardUpdate(BoardDto dto);
 }

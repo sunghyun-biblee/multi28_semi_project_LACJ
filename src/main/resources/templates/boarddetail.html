@@ -82,21 +82,38 @@
           </div>
           <div th:if="${dto.mno} eq ${session.user.mno}" id="updatedelete">
             <div class="submitbox">
-              <button type="submit" id="update">수정</button>
+              <button type="submit" id="update" onclick="boardUpdate();">수정</button>
             </div>
             <div class="submitbox">
-              <button type="submit" id="delete">삭제</button>
+              <button type="submit" id="delete" onclick="boardDelete();">삭제</button>
+              <div id="bno" th:attr="data-info=${dto.bno}"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <script type="text/javascript" src="/js/mainlist.js"></script>
     <script>
       $(document).ready(function () {
         $("#comments").click(function () {
-          $("#cmtContainer").animate({ right: "6%" }, 1000);
+          $("#cmtContainer").animate({ right: "-530px" }, 1000);
         });
       });
+    </script>
+    <script type="text/javascript">
+    	function boardDelete() {
+    		var bno = document.getElementById('bno').getAttribute('data-info');
+    		var res = confirm('정말로 삭제하시겠습니까?');
+    		if(res == true){
+    			location.href="/boardDelete?bno="+bno;
+    		};
+    	};
+    	
+    	function boardUpdate(){
+    		var bno = document.getElementById('bno').getAttribute('data-info');
+    		location.href='/boardUpdateForm?bno='+bno;	
+    	};
+    	
     </script>
   </body>
 </html>
