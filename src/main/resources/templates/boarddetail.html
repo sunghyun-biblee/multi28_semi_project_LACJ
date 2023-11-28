@@ -74,6 +74,7 @@
                 <textarea
                   rows="1"
                   cols="10"
+                  name="comment"
                   placeholder="댓글싸질러주세요"
                 ></textarea>
                 <button type="submit" id="commentsubmit">응해 해줘</button>
@@ -94,7 +95,7 @@
     <script>
       $(document).ready(function () {
         $("#comments").click(function () {
-          $("#cmtContainer").animate({ right: "6%" }, 1000);
+          $("#cmtContainer").animate({ right: "-530px" }, 1000);
         });
       });
     </script>
