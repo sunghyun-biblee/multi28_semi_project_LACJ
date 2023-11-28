@@ -41,6 +41,7 @@ public interface Mapper {
 	
 	@Select(" SELECT * FROM MULTIBOARD WHERE BPUBLIC IS NULL ORDER BY BNO DESC LIMIT #{offset}, #{pageSize} ")
 	List<BoardDto> getGuestBoards(int offset, int pageSize);
+	
 	@Select(" SELECT COUNT(*) FROM MULTIBOARD ")
 	int getBoardCount();
 
@@ -64,4 +65,12 @@ public interface Mapper {
 
 	@Select(" SELECT * FROM MULTICOMMENT WHERE BNO = #{bno} ")
 	List<CommentDto> commentSelectAll(int bno);
+	
+	@Delete(" DELETE FROM MULTIBOARD WHERE BNO = #{bno} ")
+	int boardDelete(int bno);
+	
+	@Update(" UPDATE MULTIBOARD SET BTITLE = #{btitle}, BCONTENT = #{bcontent}, BIMG = #{bimg}, BPUBLIC = #{bpublic} WHERE BNO = #{bno} ")
+	int boardUpdate(BoardDto dto);
+	
+	
 }

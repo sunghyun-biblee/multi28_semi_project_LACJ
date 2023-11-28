@@ -118,6 +118,20 @@ public class BizImpl implements Biz{
 		return mapper.getGuestBoards(offset, pageSize);
 	}
 
-	
+	@Override
+    public int updatemember(MemberDto dto) {
+
+        return mapper.updatemember(dto);
+    }
+
+	@Override
+	public int boardDelete(int bno) {
+		return mapper.boardDelete(bno);
+	}
+
+	@Override
+	public int boardUpdate(BoardDto dto) {
+		return mapper.boardUpdate(dto);
+	}
 
 }

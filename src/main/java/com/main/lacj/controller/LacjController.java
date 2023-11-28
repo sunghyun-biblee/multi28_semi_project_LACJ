@@ -51,7 +51,7 @@ public class LacjController {
 //		return "mainlist";
 //	}
 
-	@RequestMapping("/registinsert")
+	@RequestMapping("/registinsert")	
     public String registinsert(MemberDto dto, UploadFile uploadFile) {
 
         if (uploadFile.getFile() != null) {
@@ -104,12 +104,78 @@ public class LacjController {
             return "redirect:regist";
         }
     }
+	
+	@RequestMapping("/boardUpdate")
+	public String boardUpdate(BoardDto dto, UploadFile uploadfile) {
+		
+		if (uploadfile.getFile() != null) {
+
+            MultipartFile file = uploadfile.getFile();
+            
+            String originalBimg = file.getOriginalFilename();
+            String extension = FilenameUtils.getExtension(originalBimg);
+            String bimg = UUID.randomUUID().toString() + "." + extension;
+            
+            InputStream inputStream = null;
+            OutputStream outputStream = null;
+            dto.setBimg(bimg);
+
+            if (biz.boardUpdate(dto) > 0) {
+
+                try {
+                    inputStream = file.getInputStream();
+
+                    String path = "C:\\workspace\\6.FrameWork\\SemiProject_LACJ\\src\\main\\resources\\static\\img\\profile";
+                    File storage = new File(path);
+                    if(!storage.exists()) {    //존재여부 확인
+                        storage.mkdirs();    //없으면 디렉토리 만들기(폴더생성)
+                    }
+
+                    File newfile = new File(path+"/"+bimg);
+                    if(!newfile.exists()) {
+                        newfile.createNewFile();
+                    }
+
+                    System.out.println(newfile.getPath());
+                    outputStream = new FileOutputStream(newfile);
+
+                    int read = 0;
+                    byte[] b = new byte[(int)file.getSize()];
+                    while( (read=inputStream.read(b)) != -1 ) {
+                        outputStream.write(b,0,read);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+		}
+		return "redirect:mypage";
+	}		
 
 	@RequestMapping("/regist")
 	public String regist() {
 
 		return "regist";
 	}
+	
+	@RequestMapping("/boardDelete")
+	public String boardDelete(BoardDto dto) {
+		int bno = dto.getBno();
+		biz.boardDelete(bno);
+		
+		return "redirect:mainlist";
+	}
+	
+	@RequestMapping("/boardUpdateForm")
+	public String boardUpdateForm(Model model, BoardDto dto) {
+		BoardDto dto1 = biz.boardSelectOne(dto.getBno());
+		
+		model.addAttribute("dto", dto1);
+		
+		return "boardupdate";
+	}
+	
 
 	@GetMapping("/memberdelete")
     public String withdrawMember(HttpSession session) {
@@ -183,25 +249,49 @@ public class LacjController {
 		map.put("check", check);		
 		return map;
 	}
-	
+
 	@RequestMapping(value = "/updatemember", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Boolean> updatemember(@RequestBody MemberDto dto, HttpSession session) {
-
-        MemberDto login = biz.selectLogin(dto);
-        boolean check = false;
-
-        if (login != null) {
-        	//비밀번호 업데이트 biz
-            session.setAttribute("user", login);
-            session.setMaxInactiveInterval(60 * 10);
-            check = true;
+    public Map<String, Boolean> updatemember(@RequestBody HashMap<String, Object> param, HttpSession session) {
+        MemberDto dto = (MemberDto) session.getAttribute("user");
+        dto.setMpw((String)param.get("mpw"));
+        Map<String, Boolean> map = new HashMap<>();
+        int res = biz.updatemember(dto);
+        if (res>0) {
+            map.put("msg", true);
+        } else {
+            map.put("msg", false);
         }
 
-        Map<String, Boolean> map = new HashMap<>();
-        map.put("check", check);
         return map;
+    } 
+
+	@RequestMapping("/mypagedetail")
+    public String mypagedetail(HttpSession session, Model model) {
+        MemberDto dto = (MemberDto)session.getAttribute("user");
+        model.addAttribute("dto",dto); 
+        return "mypagedetail";
     }
+	
+	
+//	@RequestMapping(value = "/updatemember", method = RequestMethod.POST)
+//    @ResponseBody
+//    public Map<String, Boolean> updatemember(@RequestBody MemberDto dto, HttpSession session) {
+//
+//        MemberDto login = biz.selectLogin(dto);
+//        boolean check = false;
+//
+//        if (login != null) {
+//        	//비밀번호 업데이트 biz
+//            session.setAttribute("user", login);
+//            session.setMaxInactiveInterval(60 * 10);
+//            check = true;
+//        }
+//
+//        Map<String, Boolean> map = new HashMap<>();
+//        map.put("check", check);
+//        return map;
+//    }
 	
 //	@RequestMapping("/rollbackPassword")
 //	public int rollbackPassword()
@@ -367,16 +457,6 @@ public class LacjController {
 	
 		    return "mainlist";
 	    }
-	}
-	
-	
-	
-	@RequestMapping("/mypagedetail")
-	public String mypagedetail(Model model, HttpSession session) {
-		MemberDto dto = (MemberDto)session.getAttribute("user");
-		
-		model.addAttribute("dto", dto);
-		return "mypagedetail";
 	}
 	
 	@RequestMapping("/boarddetail")

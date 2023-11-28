@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'GmarketSansMedium';
+}
+a{
+	 text-decoration:none;
+	 color: white;
+}
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/img/dog.jpg");
+}
+header {
+  width: 100%;
+  height: 7vh;
+  box-shadow: 0px 2px 2px 2px #b5bdc5;
+}
+section {
+  
+  width: 100%;
+  height: 83vh;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2%;
+  backdrop-filter: blur(10px);
+}
+footer {
+  width: 100%;
+  height: 10vh;
+  background-color: rgb(118, 177, 232, 0.7);
+}
+form {
+  margin-top: 30px;
+  width: 80%;
+  background-color: rgb(118, 177, 232, 0.5);
+  border: 4px solid #b5bdc5;
+  box-shadow: 5px 3px 10px 2px #76787a;
+  border-radius: 10px;
+  
+}
+input,
+textarea {
+  border-radius: 10px;
+  padding: 0 0 0 20px;
+}
+textarea {
+  padding: 20px 0 0 20px;
+}
+input,
+textarea:focus {
+  outline: none;
+  border: 2px solid #76b1e8;
+}
+label {
+  margin-left: 75px;
+  width: 100px;
+  height: 60px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #b5bdc5;
+  border-radius: 10px;
+  font-weight: 700;
+
+  background-color: #f0f0f0;
+}
+#container_header {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #76b1e8;
+}
+
+#myprofile > a > img {
+  width: 32px;
+  height: 32px;
+}
+
+#container {
+  display: flex;
+  position: relative;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+#container_header > div {
+  padding: 24px;
+  font-size: 30px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#containerR {
+  display: flex;
+  flex-direction: column;
+}
+#containerR > textarea {
+  margin-top: 10%;
+  height: 90%;
+  resize: none;
+}
+#containerR > input {
+  height: 8%;
+}
+#containerL,
+#containerR {
+  width: 40%;
+  height: 80%;
+  margin-bottom: 5%;
+  border: 1px solid #b5bdc5;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 5px 7px 1px 1px rgb(105, 105, 105, 0.4);
+}
+#containerB > div {
+  margin-right: 75px;
+  display:flex;
+  align-items: center;
+}
+
+#containerB > div>span{
+	margin-right:20px
+}
+#containerB {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#containerB > div > 
+button {
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #b5bdc5;
+  width: 70px;
+  height: 50px;
+  margin-left: 10px;
+  font-weight: 700;
+}
+#containerB > div > input{
+	width: 30px;
+  height: 30px;
+  margin-right:10px
+}
+
+#filebtn {
+  display: none;
+}
+
+footer > div {
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+footer > div > span {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  background-color: white;
+}
