@@ -125,7 +125,7 @@ public class LacjController {
                 try {
                     inputStream = file.getInputStream();
 
-                    String path = "C:\\workspace\\6.FrameWork\\SemiProject_LACJ\\src\\main\\resources\\static\\img\\profile";
+                    String path = "C:\\workspace\\6_FrameWork\\SemiProject_LACJ\\src\\main\\resources\\static\\img";
                     File storage = new File(path);
                     if(!storage.exists()) {    //존재여부 확인
                         storage.mkdirs();    //없으면 디렉토리 만들기(폴더생성)
