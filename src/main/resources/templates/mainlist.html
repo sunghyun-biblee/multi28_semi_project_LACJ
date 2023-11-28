@@ -59,10 +59,11 @@
 					<div id="container_coment">
 						<div id="coment_box">
 							<span>#댓글 작성</span>
-							<textarea name="#" id="" cols="30" rows="10"
-								placeholder="  게시물에 댓글을 작성해보세요!"></textarea>
+							<textarea name="comment" id="" cols="30" rows="10"
+								class="commentbox" placeholder="  게시물에 댓글을 작성해보세요!"></textarea>
 							<div>
-								<input type="submit" value="작성" id="commentsubmit" />
+								<input type="submit" value="작성" id="commentsubmit" 
+									th:attr="data-bno=${boardlist.bno}"/>
 							</div>
 						</div>
 					</div>

@@ -43,7 +43,6 @@ body {
 }
 
 section {
-  width: 70%;
   display: block;
   margin-top: 100px;
 }
@@ -361,7 +360,7 @@ header {
 #cmtContainer {
   position: absolute;
   top: 0;
-  right: 49%;
+  right: 0px;
   z-index: 1;
   width: 510px;
   height: 100%;
@@ -375,14 +374,14 @@ header {
 .commentlist {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
   height: 85%;
   padding: 24px;
 }
 
 .commentR {
   position: relative;
-  height: 50%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
